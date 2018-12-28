@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,12 +49,17 @@ public class MainActivity extends AppCompatActivity
         // Tabs
         // ----
 
+        // TODO Fix tab bar height
         // Create an instance of the tab layout from the view
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_overview));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_receive));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_pay));
+        // Set the height
+//        ViewGroup.LayoutParams tabParams = tabLayout.getLayoutParams();
+//        tabParams.height = 25;
+//        tabLayout.setLayoutParams(tabParams);
         // Set the tabs to fill the entire layout.
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         // Use PagerAdapter to manage page views in fragments.

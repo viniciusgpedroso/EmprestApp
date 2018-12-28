@@ -25,8 +25,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        app:tabMode="fixed"
+        app:tabGravity="center"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <!--android:minHeight="?attr/actionBarSize"-->
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
