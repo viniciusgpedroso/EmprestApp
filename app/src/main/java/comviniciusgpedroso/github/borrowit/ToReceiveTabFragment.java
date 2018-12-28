@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 
 
 /**
- * Tab Fragment that shows the user an overview of the amount to be received
- * and to be paid.
+ * Tab Fragment that shows the user an list of all the current payments to be
+ * received.
  * A simple {@link Fragment} subclass.
  */
-public class OverviewTabFragment extends Fragment {
+public class ToReceiveTabFragment extends Fragment {
 
 
-    public OverviewTabFragment() {
+    public ToReceiveTabFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class OverviewTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview_tab, container, false);
+        return inflater.inflate(R.layout.fragment_to_receive_tab, container, false);
     }
 
 }
