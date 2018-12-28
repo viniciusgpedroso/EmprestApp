@@ -3,6 +3,9 @@ package comviniciusgpedroso.github.borrowit;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -40,6 +43,43 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // ----
+        // Tabs
+        // ----
+
+        // Create an instance of the tab layout from the view
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        // Set the text for each tab.
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_overview));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_receive));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_pay));
+        // Set the tabs to fill the entire layout.
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        // Use PagerAdapter to manage page views in fragments.
+        // Each page is represented by its own fragment.
+        final ViewPager viewPager = findViewById(R.id.pager);
+        final PagerAdapter adapter = new comviniciusgpedroso.github.borrowit
+                .PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        // Setting a listener for clicks.
+        viewPager.addOnPageChangeListener(new TabLayout
+                .TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
     }
 
     @Override
