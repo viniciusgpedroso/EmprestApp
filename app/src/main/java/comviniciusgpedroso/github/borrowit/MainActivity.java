@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         // ----
         // Tabs
         // ----
-        
+
         // Create an instance of the tab layout from the view
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
