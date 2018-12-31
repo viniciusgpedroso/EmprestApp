@@ -28,4 +28,7 @@ public class OverviewTabFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_overview_tab, container, false);
     }
 
+    /* TODO Add onClick listeners for the @+id/overview_pay and
+    @+id/overview_receive */
+
 }

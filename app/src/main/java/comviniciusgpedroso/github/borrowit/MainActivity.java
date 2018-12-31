@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity
         // ----
         // Tabs
         // ----
-
-        // TODO Fix tab bar height
+        
         // Create an instance of the tab layout from the view
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
