@@ -31,5 +31,70 @@ public class Item {
         mIsToReceive = isToReceive;
     }
 
-    
+
+    /*
+     * Sets the status to DONE;
+     */
+    public void setDone() {
+        mStatus = DONE;
+    }
+
+    /**
+     * Checks if the current date is after the date and sets the status
+     */
+    public void setUndone() {
+        if (mDueDate.after(new Date())) {
+            mStatus = OVERDUE;
+        } else {
+            mStatus = DUE;
+        }
+    }
+
+    public UUID getId() {
+        return mId;
+    }
+
+    public float getAmount() {
+        return mAmount;
+    }
+
+    public void setAmount(float amount) {
+        mAmount = amount;
+    }
+
+    public String getContact() {
+        return mContact;
+    }
+
+    public void setContact(String contact) {
+        mContact = contact;
+    }
+
+    public Date getBorrowDate() {
+        return mBorrowDate;
+    }
+
+    public void setBorrowDate(Date borrowDate) {
+        mBorrowDate = borrowDate;
+    }
+
+    public Date getDueDate() {
+        return mDueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        mDueDate = dueDate;
+    }
+
+    public int getStatus() {
+        return mStatus;
+    }
+
+    public boolean isToReceive() {
+        return mIsToReceive;
+    }
+
+    public void setToReceive(boolean toReceive) {
+        mIsToReceive = toReceive;
+    }
 }
