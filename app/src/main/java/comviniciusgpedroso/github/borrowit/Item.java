@@ -21,13 +21,14 @@ public class Item {
     private int mStatus;
     private boolean mIsToReceive;
 
-    public Item(float amount, String contact, Date borrowDate, Date dueDate, boolean isToReceive) {
+    public Item(float amount, String contact, Date borrowDate, Date dueDate, boolean isToReceive,
+    int temporaryImage) {
         mId = UUID.randomUUID();
         mAmount = amount;
         mContact = contact;
         mBorrowDate = borrowDate;
         mDueDate = dueDate;
-        mStatus = DUE;
+        mStatus = temporaryImage;
         mIsToReceive = isToReceive;
     }
 
@@ -56,6 +57,10 @@ public class Item {
 
     public float getAmount() {
         return mAmount;
+    }
+
+    public String getValue() {
+        return this.getAmount() + "";
     }
 
     public void setAmount(float amount) {

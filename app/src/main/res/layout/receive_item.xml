@@ -55,14 +55,14 @@
                 android:padding="4dp">
 
                 <TextView
-                    android:id="@+id/contact_name"
+                    android:id="@+id/item_contact_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/item_placeholder_contact" />
 
                 <TextView
-                    android:id="@+id/due_date"
+                    android:id="@+id/item_due_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
