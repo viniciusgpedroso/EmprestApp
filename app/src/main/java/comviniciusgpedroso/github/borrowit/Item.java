@@ -1,6 +1,8 @@
 package comviniciusgpedroso.github.borrowit;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -86,6 +88,16 @@ public class Item {
     public Date getDueDate() {
         return mDueDate;
     }
+
+    public String getSimpleDueDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mDueDate);
+        int year = cal.get(Calendar.YEAR);
+        String month = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        return day + " " + month + " " + year;
+    };
 
     public void setDueDate(Date dueDate) {
         mDueDate = dueDate;

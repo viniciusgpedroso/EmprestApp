@@ -38,9 +38,10 @@ public class ItemCardAdapter extends
         Item currentItem = mItemArrayList.get(position);
 
         holder.mImageStatus.setImageResource(currentItem.getStatus());
-        holder.mValue.setText(currentItem.getValue());
+        String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
+        holder.mValue.setText(valueWithCurrencySymbol);
         holder.mContact.setText(currentItem.getContact());
-        holder.mDueDate.setText(currentItem.getDueDate().toString());
+        holder.mDueDate.setText(currentItem.getSimpleDueDate());
     }
 
     @Override
