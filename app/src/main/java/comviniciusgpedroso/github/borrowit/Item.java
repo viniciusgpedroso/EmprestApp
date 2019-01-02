@@ -34,7 +34,6 @@ public class Item {
         mIsToReceive = isToReceive;
     }
 
-
     /*
      * Sets the status to DONE;
      */
