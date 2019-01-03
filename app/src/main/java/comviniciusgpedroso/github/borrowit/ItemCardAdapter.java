@@ -95,7 +95,6 @@ public class ItemCardAdapter extends
 
             detailIntent.putExtra("amount", currentItem.getAmount());
             detailIntent.putExtra("contact", currentItem.getContact());
-            detailIntent.putExtra("")
 
             pr.getContext().startActivity(detailIntent);
         }
