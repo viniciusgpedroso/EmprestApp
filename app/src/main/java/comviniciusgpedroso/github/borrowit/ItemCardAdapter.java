@@ -1,5 +1,8 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,15 +23,28 @@ public class ItemCardAdapter extends
         RecyclerView.Adapter<ItemCardAdapter.ItemCardHolder> {
 
     private ArrayList<Item> mItemArrayList;
+    private boolean mIsToReceive;
+    private Context mContext;
+    private ViewGroup pr;
 
-    public ItemCardAdapter(ArrayList<Item> itemArrayList) {
+    public ItemCardAdapter(Context context, ArrayList<Item> itemArrayList, boolean isToReceive) {
         this.mItemArrayList = itemArrayList;
+        this.mIsToReceive = isToReceive;
+        this.mContext = context;
     }
 
     @Override
     public ItemCardAdapter.ItemCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.receive_item, parent,
-        false);
+        View v;
+        // Chooses the layout
+        pr = parent;
+        if(mIsToReceive) {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.receive_item, parent,
+                    false);
+        } else {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.pay_item, parent,
+                    false);
+        }
         ItemCardHolder itemCardHolder = new ItemCardHolder(v);
         return itemCardHolder;
     }
@@ -49,7 +65,7 @@ public class ItemCardAdapter extends
         return mItemArrayList.size();
     }
 
-    class ItemCardHolder extends RecyclerView.ViewHolder {
+    class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageStatus;
         public TextView mValue;
         public TextView mContact;
@@ -61,6 +77,27 @@ public class ItemCardAdapter extends
             mImageStatus = itemView.findViewById(R.id.item_status_img);
             mContact = itemView.findViewById(R.id.item_contact_name);
             mDueDate = itemView.findViewById(R.id.item_due_date);
+
+            // Set the OnClickListener to the entire view.
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Item currentItem = mItemArrayList.get(getAdapterPosition());
+            Intent detailIntent;
+            if(mIsToReceive) {
+                detailIntent = new Intent(pr.getContext(), ReceiveDetailActivity.class);
+
+            } else {
+                detailIntent = new Intent(pr.getContext(), PayDetailActivity.class);
+            }
+
+            detailIntent.putExtra("amount", currentItem.getAmount());
+            detailIntent.putExtra("contact", currentItem.getContact());
+            detailIntent.putExtra("")
+
+            pr.getContext().startActivity(detailIntent);
         }
 
     }

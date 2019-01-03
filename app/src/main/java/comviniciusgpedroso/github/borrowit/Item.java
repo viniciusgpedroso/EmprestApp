@@ -1,5 +1,6 @@
 package comviniciusgpedroso.github.borrowit;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -61,7 +62,10 @@ public class Item {
     }
 
     public String getValue() {
-        return this.getAmount() + "";
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        df.setMinimumFractionDigits(2);
+        return df.format(mAmount);
     }
 
     public void setAmount(float amount) {
