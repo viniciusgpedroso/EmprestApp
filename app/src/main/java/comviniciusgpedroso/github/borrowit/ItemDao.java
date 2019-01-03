@@ -1,0 +1,24 @@
+package comviniciusgpedroso.github.borrowit;
+
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
+
+import java.util.List;
+
+/**
+ * Created by endsieg on 03/01/19.
+ */
+
+@Dao
+public interface ItemDao {
+
+    @Insert
+    void insert(Item item);
+
+    @Query("DELETE FROM item_table")
+    void deleteAll();
+
+    @Query("SELECT * from item_table ORDER BY amount ASC")
+    List<Item> getAllItems();
+}
