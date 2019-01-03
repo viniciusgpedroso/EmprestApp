@@ -71,23 +71,29 @@ public class ToReceiveTabFragment extends Fragment {
     private void createsPlaceHolderData() {
         Date firstDate = new Date();
         Date secondDate = new Date();
-        itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, false, R.drawable
                 .ic_checked));
-        itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, false, R.drawable
                 .ic_after_due_date));
-        itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_before_due_date));
-        itemList.add(new Item(15f, "Pedro Agua", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(15f, "Pedro Agua", firstDate, secondDate, true, false, R.drawable
                 .ic_checked));
-        itemList.add(new Item(5.20f, "Juliana Terra", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(5.20f, "Juliana Terra", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_after_due_date));
-        itemList.add(new Item(0.5f, "Guilherme Sal", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(0.5f, "Guilherme Sal", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_before_due_date));
-        itemList.add(new Item(1535.25f, "Gabriel Vapor", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(1535.25f, "Gabriel Vapor", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_checked));
-        itemList.add(new Item(10.00f, "Teste Teste", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(10.00f, "Teste Teste", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_after_due_date));
-        itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_before_due_date));
     }
 

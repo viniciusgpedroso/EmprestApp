@@ -41,23 +41,29 @@ public class ToPayTabFragment extends Fragment {
         ArrayList<Item> itemList = new ArrayList<>();
         Date firstDate = new Date();
         Date secondDate = new Date();
-        itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, false, R.drawable
                 .ic_pay_checked));
-        itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, false, R.drawable
                 .ic_pay_after_due_date));
-        itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_before_due_date));
-        itemList.add(new Item(15f, "Pedro Agua", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(15f, "Pedro Agua", firstDate, secondDate, true, false, R.drawable
                 .ic_pay_checked));
-        itemList.add(new Item(5.20f, "Juliana Terra", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(5.20f, "Juliana Terra", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_after_due_date));
-        itemList.add(new Item(0.5f, "Guilherme Sal", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(0.5f, "Guilherme Sal", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_before_due_date));
-        itemList.add(new Item(1535.25f, "Gabriel Vapor", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(1535.25f, "Gabriel Vapor", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_checked));
-        itemList.add(new Item(10.00f, "Teste Teste", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(10.00f, "Teste Teste", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_after_due_date));
-        itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, R.drawable
+        itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, false, R
+                .drawable
                 .ic_pay_before_due_date));
 
         View view = inflater.inflate(R.layout.fragment_to_pay_tab, container, false);

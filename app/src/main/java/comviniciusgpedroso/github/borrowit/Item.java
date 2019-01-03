@@ -1,5 +1,10 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,22 +15,38 @@ import java.util.UUID;
  * Item Class
  * Deals with the data model for the borrow items.
  */
+@Entity(tableName = "item_table")
 public class Item {
     // Status constants
     private static final int DUE = 0;
     private static final int OVERDUE = 1;
     private static final int DONE = 2;
 
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "uuid")
     private UUID mId;
-    private float mAmount; // TODO Convert this float to Currency using system location
+    @NonNull
+    @ColumnInfo(name = "amount")
+    private Float mAmount; // TODO Convert this float to Currency using system location
+    @ColumnInfo(name = "contact")
     private String mContact;
+    @NonNull
+    @ColumnInfo(name = "borrowDate")
     private Date mBorrowDate;
+    @NonNull
+    @ColumnInfo(name = "dueDate")
     private Date mDueDate;
-    private int mStatus;
+    @NonNull
+    @ColumnInfo(name = "status")
+    private Integer mStatus;
+    @ColumnInfo(name = "isToReceive")
     private boolean mIsToReceive;
+    @ColumnInfo(name = "isObject")
+    private boolean mIsObject;
 
-    public Item(float amount, String contact, Date borrowDate, Date dueDate, boolean isToReceive,
-    int temporaryImage) {
+    public Item(@NonNull Float amount, String contact, @NonNull Date borrowDate, @NonNull Date dueDate,
+                boolean isToReceive, boolean isObject, int temporaryImage) {
         mId = UUID.randomUUID();
         mAmount = amount;
         mContact = contact;
@@ -33,6 +54,7 @@ public class Item {
         mDueDate = dueDate;
         mStatus = temporaryImage;
         mIsToReceive = isToReceive;
+        mIsObject = isObject;
     }
 
     /*
