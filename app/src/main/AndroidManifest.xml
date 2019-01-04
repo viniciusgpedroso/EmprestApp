@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReceiveDetailActivity" />
-        <activity android:name=".PayDetailActivity"></activity>
+        <activity android:name=".PayDetailActivity" />
+        <activity android:name=".NewItemActivity"></activity>
     </application>
 
 </manifest>

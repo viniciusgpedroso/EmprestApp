@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="comviniciusgpedroso.github.borrowit.NewItemActivity">
+
+        <!-- TODO implement toogle button for objects and disable @+id/amount_et PAY -> TO RETURN -->
+
+        <RadioGroup
+            android:id="@+id/pay_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/to_receive_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Receive" />
+
+            <RadioButton
+                android:id="@+id/to_pay_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To pay" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/amount_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Amount to be paid"
+            android:inputType="numberSigned"
+            app:layout_constraintTop_toBottomOf="@id/pay_radio_group"/>
+
+        <!--TODO Make Contact picker-->
+        <EditText
+            android:id="@+id/contact_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Contact name"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/amount_et"/>
+
+        <Button
+            android:id="@+id/borrow_date_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set borrow date"
+            app:layout_constraintTop_toBottomOf="@+id/contact_et"/>
+
+        <Button
+            android:id="@+id/due_date_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set due date"
+            app:layout_constraintTop_toBottomOf="@+id/borrow_date_btn"/>
+
+        <CheckBox
+            android:id="@+id/already_paid_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already paid?"
+            app:layout_constraintTop_toBottomOf="@+id/due_date_btn"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
