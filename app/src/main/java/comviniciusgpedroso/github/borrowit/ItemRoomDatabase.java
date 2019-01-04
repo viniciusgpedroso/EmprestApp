@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by endsieg on 04/01/19.
@@ -77,11 +78,15 @@ public abstract class ItemRoomDatabase extends RoomDatabase {
             ArrayList<Item> itemList = new ArrayList<>();
             Date firstDate = new Date();
             Date secondDate = new Date();
-            itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, false, R.drawable
+            itemList.add(new Item(UUID.randomUUID(), 15f, "Joao Silva", firstDate, secondDate,
+                    true, false, R
+                    .drawable
                     .ic_pay_checked));
-            itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, false, R.drawable
+            itemList.add(new Item(UUID.randomUUID(),5f, "Maria Souza", firstDate, secondDate,
+                    true, false, R.drawable
                     .ic_pay_after_due_date));
-            itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, false, R
+            itemList.add(new Item(UUID.randomUUID(), 55f, "Jose Oliveira", firstDate, secondDate,
+                    true, false, R
                     .drawable
                     .ic_pay_before_due_date));
 

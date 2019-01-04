@@ -28,7 +28,6 @@ import java.util.List;
 public class ToPayTabFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Context mContext;
     private ItemViewModel mItemViewModel; // UI interaction with db
@@ -41,13 +40,10 @@ public class ToPayTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //super.onCreateView(inflater, container, savedInstanceState);
-
-        // Get a new or existing ViewModel from the ViewModelProvider
-        mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
+        super.onCreateView(inflater, container, savedInstanceState);
 
 
-        final FragmentActivity c = getActivity();
+
         /*ArrayList<Item> itemList = new ArrayList<>();
         Date firstDate = new Date();
         Date secondDate = new Date();
@@ -79,26 +75,34 @@ public class ToPayTabFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_to_pay_tab, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerview_to_pay);
-
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
         final ItemCardAdapter adapter = new ItemCardAdapter(this.getContext());
 
-        mLayoutManager = new LinearLayoutManager(c);
-        //mAdapter = new ItemCardAdapter(mContext, itemList, false);
+        mRecyclerView.setAdapter(adapter);
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
+        // Get a new or existing ViewModel from the ViewModelProvider
+        mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
         // Add an observer on the LiveData returned by getAllItems.
-        // The onChanged() method fires when the obersved data changes and the activity is
+        // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
         mItemViewModel.getAllItems().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(@Nullable List<Item> items) {
                 // Update the cached copy of the words in the adapter
+                adapter.setItems(items);
             }
         });
+
+
+
+        //mAdapter = new ItemCardAdapter(mContext, itemList, false);
+
+
+
+
+
         return view;
     }
 

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 
 /**
@@ -25,7 +26,7 @@ import java.util.Date;
 public class ToReceiveTabFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ItemCardAdapter adapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<Item> itemList;
     private Context mContext = getContext();
@@ -50,10 +51,10 @@ public class ToReceiveTabFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.recyclerview_to_receive);
 
         mLayoutManager = new LinearLayoutManager(c);
-        mAdapter = new ItemCardAdapter(mContext, itemList, true);
+        adapter = new ItemCardAdapter(this.getContext());
 
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(adapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         // Inflate the layout for this fragment
 
@@ -71,30 +72,31 @@ public class ToReceiveTabFragment extends Fragment {
     private void createsPlaceHolderData() {
         Date firstDate = new Date();
         Date secondDate = new Date();
-        itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, false, R.drawable
+        itemList.add(new Item(UUID.randomUUID(), 15f, "Joao Silva", firstDate, secondDate, true,
+                false, R.drawable
                 .ic_checked));
-        itemList.add(new Item(5f, "Maria Souza", firstDate, secondDate, true, false, R.drawable
+        itemList.add(new Item(UUID.randomUUID(), 5f, "Maria Souza", firstDate, secondDate, true,
+                false, R.drawable
                 .ic_after_due_date));
-        itemList.add(new Item(55f, "Jose Oliveira", firstDate, secondDate, true, false, R
+        itemList.add(new Item(UUID.randomUUID(), 55f, "Jose Oliveira", firstDate, secondDate,
+                true, false, R
                 .drawable
                 .ic_before_due_date));
-        itemList.add(new Item(15f, "Pedro Agua", firstDate, secondDate, true, false, R.drawable
+        itemList.add(new Item(UUID.randomUUID(), 15f, "Pedro Agua", firstDate, secondDate, true,
+                false, R.drawable
                 .ic_checked));
-        itemList.add(new Item(5.20f, "Juliana Terra", firstDate, secondDate, true, false, R
+        itemList.add(new Item(UUID.randomUUID(), 5.20f, "Juliana Terra", firstDate, secondDate,
+                true, false, R
                 .drawable
                 .ic_after_due_date));
-        itemList.add(new Item(0.5f, "Guilherme Sal", firstDate, secondDate, true, false, R
+        itemList.add(new Item(UUID.randomUUID(),0.5f, "Guilherme Sal", firstDate, secondDate,
+                true, false, R
                 .drawable
                 .ic_before_due_date));
-        itemList.add(new Item(1535.25f, "Gabriel Vapor", firstDate, secondDate, true, false, R
+        itemList.add(new Item(UUID.randomUUID(), 1535.25f, "Gabriel Vapor", firstDate, secondDate,
+                true, false, R
                 .drawable
                 .ic_checked));
-        itemList.add(new Item(10.00f, "Teste Teste", firstDate, secondDate, true, false, R
-                .drawable
-                .ic_after_due_date));
-        itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, false, R
-                .drawable
-                .ic_before_due_date));
     }
 
     /**
@@ -131,7 +133,7 @@ public class ToReceiveTabFragment extends Fragment {
                 // Remove the item from the dataset
                 itemList.remove(viewHolder.getAdapterPosition());
                 // Notify the adapter
-                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
             }
         });
         return helper;

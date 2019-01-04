@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by endsieg on 31/12/18.
@@ -24,16 +25,9 @@ public class ItemCardAdapter extends
 
     private final LayoutInflater mInflater;
     private ArrayList<Item> mItemArrayList;
-    private boolean mIsToReceive;
+    private boolean mIsToReceive = false; // TODO(1) FIX layout inflater
     private Context mContext;
     private ViewGroup pr;
-
-    public ItemCardAdapter(Context context, ArrayList<Item> itemArrayList, boolean isToReceive) {
-        mInflater = LayoutInflater.from(context);
-        this.mItemArrayList = itemArrayList;
-        this.mIsToReceive = isToReceive;
-        this.mContext = context;
-    }
 
     public ItemCardAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -45,18 +39,17 @@ public class ItemCardAdapter extends
         // Chooses the layout
         pr = parent;
         if(mIsToReceive) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.receive_item, parent,
-                    false);
+            v = mInflater.inflate(R.layout.receive_item, parent, false);
+            // v = LayoutInflater.from(parent.getContext()).inflate(R.layout.receive_item, parent, false);
         } else {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.pay_item, parent,
-                    false);
+            v = mInflater.inflate(R.layout.pay_item, parent, false);
+            // v = LayoutInflater.from(parent.getContext()).inflate(R.layout.pay_item, parent, false);
         }
-        ItemCardHolder itemCardHolder = new ItemCardHolder(v);
-        return itemCardHolder;
+        return new ItemCardHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ItemCardAdapter.ItemCardHolder holder, int position) {
+    public void onBindViewHolder(ItemCardHolder holder, int position) {
         Item currentItem = mItemArrayList.get(position);
 
         holder.mImageStatus.setImageResource(currentItem.getStatus());
@@ -73,6 +66,11 @@ public class ItemCardAdapter extends
         if (mItemArrayList != null)
             return mItemArrayList.size();
         else return 0;
+    }
+
+    void setItems(List<Item> items) {
+        mItemArrayList = (ArrayList<Item>) items;
+        notifyDataSetChanged();
     }
 
     class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

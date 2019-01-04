@@ -46,27 +46,15 @@ public class Item {
     @ColumnInfo(name = "isObject")
     private boolean mIsObject;
 
-    public Item(@NonNull UUID uuid, @NonNull Float amount, String contact, @NonNull Date
+    public Item(@NonNull UUID id, @NonNull Float amount, String contact, @NonNull Date
             borrowDate, @NonNull Date dueDate, boolean isToReceive, boolean isObject, int
-            temporaryImage) {
-        mId = uuid;
+            status) {
+        mId = id;
         mAmount = amount;
         mContact = contact;
         mBorrowDate = borrowDate;
         mDueDate = dueDate;
-        mStatus = temporaryImage;
-        mIsToReceive = isToReceive;
-        mIsObject = isObject;
-    }
-
-    public Item(@NonNull Float amount, String contact, @NonNull Date borrowDate, @NonNull Date dueDate,
-                boolean isToReceive, boolean isObject, int temporaryImage) {
-        mId = UUID.randomUUID();
-        mAmount = amount;
-        mContact = contact;
-        mBorrowDate = borrowDate;
-        mDueDate = dueDate;
-        mStatus = temporaryImage;
+        mStatus = status;
         mIsToReceive = isToReceive;
         mIsObject = isObject;
     }
@@ -93,7 +81,7 @@ public class Item {
         return mId;
     }
 
-    public float getAmount() {
+    public Float getAmount() {
         return mAmount;
     }
 
@@ -138,7 +126,7 @@ public class Item {
         mDueDate = dueDate;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return mStatus;
     }
 
