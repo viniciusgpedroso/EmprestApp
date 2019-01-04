@@ -1,5 +1,6 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -19,6 +20,6 @@ public interface ItemDao {
     @Query("DELETE FROM item_table")
     void deleteAll();
 
-    @Query("SELECT * from item_table ORDER BY amount ASC")
-    List<Item> getAllItems();
+    @Query("SELECT * from item_table ORDER BY dueDate ASC")
+    LiveData<List<Item>> getAllItems();
 }
