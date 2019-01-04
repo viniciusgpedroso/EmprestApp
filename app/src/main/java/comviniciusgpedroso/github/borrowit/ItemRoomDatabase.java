@@ -67,10 +67,10 @@ public abstract class ItemRoomDatabase extends RoomDatabase {
             // when it is first created
             mItemDao.deleteAll();
 
-            // Populates with placeholder data
-            for (int i = 0; i <= placeholderData.size() - 1; i++) {
-                mItemDao.insert(placeholderData.get(i));
-            }
+//            // Populates with placeholder data
+//            for (int i = 0; i <= placeholderData.size() - 1; i++) {
+//                mItemDao.insert(placeholderData.get(i));
+//            }
             return null;
         }
 

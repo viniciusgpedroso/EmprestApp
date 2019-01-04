@@ -4,8 +4,10 @@ package comviniciusgpedroso.github.borrowit;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,11 +17,14 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -28,6 +33,7 @@ import java.util.UUID;
  * A simple {@link Fragment} subclass.
  */
 public class ToReceiveTabFragment extends Fragment {
+    public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
 
     private RecyclerView mRecyclerView;
     private ItemCardAdapter adapter;
@@ -74,6 +80,16 @@ public class ToReceiveTabFragment extends Fragment {
         // Attach the helper to the RecyclerView
         helper.attachToRecyclerView(mRecyclerView);
 
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NewItemActivity.class);
+                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
+
+            }
+        });
+
         return view;
     }
 
@@ -115,5 +131,22 @@ public class ToReceiveTabFragment extends Fragment {
             }
         });
         return helper;
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Testing new activity
+            Item item = new Item(UUID.randomUUID(), 123.45f, "Testing Test", new Date(), new
+                    Date(), true, false, 1);
+            mItemViewModel.insert(item);
+        } else {
+            Toast.makeText(
+                    mContext,
+                    "Not saved",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

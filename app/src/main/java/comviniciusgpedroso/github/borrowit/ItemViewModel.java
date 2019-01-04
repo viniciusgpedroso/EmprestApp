@@ -24,7 +24,7 @@ public class ItemViewModel extends AndroidViewModel {
         return mAllItems;
     }
 
-    private void insert(Item item) {
+    public void insert(Item item) {
         mRepository.insert(item);
     }
 }

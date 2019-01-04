@@ -52,7 +52,7 @@ public class ItemCardAdapter extends
     public void onBindViewHolder(ItemCardHolder holder, int position) {
         Item currentItem = mItemArrayList.get(position);
 
-        holder.mImageStatus.setImageResource(currentItem.getStatus());
+        holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus()); // TODO Fix image Resource
         String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
         holder.mValue.setText(valueWithCurrencySymbol);
         holder.mContact.setText(currentItem.getContact());

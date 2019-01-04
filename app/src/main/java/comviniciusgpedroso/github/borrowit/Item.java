@@ -157,4 +157,9 @@ public class Item {
     public void setIsObject(boolean object) {
         mIsObject = object;
     }
+
+    // TODO Complete this method
+    public int getImageCodeFromStatus() {
+        return R.drawable.ic_after_due_date;
+    }
 }
