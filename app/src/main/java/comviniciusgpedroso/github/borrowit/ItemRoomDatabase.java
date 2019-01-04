@@ -4,6 +4,7 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import java.util.Date;
  */
 
 @Database(entities = {Item.class}, version = 1, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class ItemRoomDatabase extends RoomDatabase {
 
     public abstract ItemDao itemDao();

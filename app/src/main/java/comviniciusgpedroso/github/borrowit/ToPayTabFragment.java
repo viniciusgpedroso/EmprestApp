@@ -1,8 +1,11 @@
 package comviniciusgpedroso.github.borrowit;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,6 +17,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -27,6 +31,7 @@ public class ToPayTabFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Context mContext;
+    private ItemViewModel mItemViewModel; // UI interaction with db
 
     public ToPayTabFragment() {
         // Required empty public constructor
@@ -37,8 +42,13 @@ public class ToPayTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //super.onCreateView(inflater, container, savedInstanceState);
+
+        // Get a new or existing ViewModel from the ViewModelProvider
+        mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
+
+
         final FragmentActivity c = getActivity();
-        ArrayList<Item> itemList = new ArrayList<>();
+        /*ArrayList<Item> itemList = new ArrayList<>();
         Date firstDate = new Date();
         Date secondDate = new Date();
         itemList.add(new Item(15f, "Joao Silva", firstDate, secondDate, true, false, R.drawable
@@ -64,18 +74,31 @@ public class ToPayTabFragment extends Fragment {
                 .ic_pay_after_due_date));
         itemList.add(new Item(35.3f, "Nome Sobrenome", firstDate, secondDate, true, false, R
                 .drawable
-                .ic_pay_before_due_date));
+                .ic_pay_before_due_date));*/
 
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_to_pay_tab, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerview_to_pay);
 
+        final ItemCardAdapter adapter = new ItemCardAdapter(this.getContext());
+
         mLayoutManager = new LinearLayoutManager(c);
-        mAdapter = new ItemCardAdapter(mContext, itemList, false);
+        //mAdapter = new ItemCardAdapter(mContext, itemList, false);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        // Inflate the layout for this fragment
+
+
+        // Add an observer on the LiveData returned by getAllItems.
+        // The onChanged() method fires when the obersved data changes and the activity is
+        // in the foreground.
+        mItemViewModel.getAllItems().observe(this, new Observer<List<Item>>() {
+            @Override
+            public void onChanged(@Nullable List<Item> items) {
+                // Update the cached copy of the words in the adapter
+            }
+        });
         return view;
     }
 

@@ -22,15 +22,21 @@ import java.util.ArrayList;
 public class ItemCardAdapter extends
         RecyclerView.Adapter<ItemCardAdapter.ItemCardHolder> {
 
+    private final LayoutInflater mInflater;
     private ArrayList<Item> mItemArrayList;
     private boolean mIsToReceive;
     private Context mContext;
     private ViewGroup pr;
 
     public ItemCardAdapter(Context context, ArrayList<Item> itemArrayList, boolean isToReceive) {
+        mInflater = LayoutInflater.from(context);
         this.mItemArrayList = itemArrayList;
         this.mIsToReceive = isToReceive;
         this.mContext = context;
+    }
+
+    public ItemCardAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -60,9 +66,13 @@ public class ItemCardAdapter extends
         holder.mDueDate.setText(currentItem.getSimpleDueDate());
     }
 
+    // getItemCount() is called many times, and when it is first called,
+    // mItemArrayList has not been updated (means initially, it's null).
     @Override
     public int getItemCount() {
-        return mItemArrayList.size();
+        if (mItemArrayList != null)
+            return mItemArrayList.size();
+        else return 0;
     }
 
     class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

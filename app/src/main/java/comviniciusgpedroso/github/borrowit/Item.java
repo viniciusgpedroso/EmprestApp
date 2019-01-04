@@ -22,6 +22,7 @@ public class Item {
     private static final int OVERDUE = 1;
     private static final int DONE = 2;
 
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "uuid")
@@ -44,6 +45,19 @@ public class Item {
     private boolean mIsToReceive;
     @ColumnInfo(name = "isObject")
     private boolean mIsObject;
+
+    public Item(@NonNull UUID uuid, @NonNull Float amount, String contact, @NonNull Date
+            borrowDate, @NonNull Date dueDate, boolean isToReceive, boolean isObject, int
+            temporaryImage) {
+        mId = uuid;
+        mAmount = amount;
+        mContact = contact;
+        mBorrowDate = borrowDate;
+        mDueDate = dueDate;
+        mStatus = temporaryImage;
+        mIsToReceive = isToReceive;
+        mIsObject = isObject;
+    }
 
     public Item(@NonNull Float amount, String contact, @NonNull Date borrowDate, @NonNull Date dueDate,
                 boolean isToReceive, boolean isObject, int temporaryImage) {
@@ -90,10 +104,6 @@ public class Item {
         return df.format(mAmount);
     }
 
-    public void setAmount(float amount) {
-        mAmount = amount;
-    }
-
     public String getContact() {
         return mContact;
     }
@@ -136,7 +146,27 @@ public class Item {
         return mIsToReceive;
     }
 
-    public void setToReceive(boolean toReceive) {
+    public void setIsToReceive(boolean toReceive) {
         mIsToReceive = toReceive;
+    }
+
+    public boolean isObject() {
+        return mIsObject;
+    }
+
+    public void setId(@NonNull UUID id) {
+        mId = id;
+    }
+
+    public void setAmount(@NonNull Float amount) {
+        mAmount = amount;
+    }
+
+    public void setStatus(@NonNull Integer status) {
+        mStatus = status;
+    }
+
+    public void setIsObject(boolean object) {
+        mIsObject = object;
     }
 }
