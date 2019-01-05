@@ -138,15 +138,18 @@ public class ToReceiveTabFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            // TODO GET DATA BACK FROM ACTIVITY
             // Testing new activity
             Item item = new Item(UUID.randomUUID(), 123.45f, "Testing Test", new Date(), new
                     Date(), true, false, 1);
             mItemViewModel.insert(item);
-        } else {
-            Toast.makeText(
-                    mContext,
-                    "Not saved",
-                    Toast.LENGTH_LONG).show();
         }
+        // TODO Create failing result code
+//        else {
+//            Toast.makeText(
+//                    mContext,
+//                    "Not saved",
+//                    Toast.LENGTH_LONG).show();
+//        }
     }
 }
