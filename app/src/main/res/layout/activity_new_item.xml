@@ -16,6 +16,7 @@
             android:id="@+id/question_pay_receive"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Pay or Receive?"/>
@@ -55,6 +56,7 @@
             android:id="@+id/value_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Value"
@@ -76,7 +78,7 @@
             android:hint="Value borrowed"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:inputType="numberSigned"
+            android:inputType="numberDecimal"
             app:layout_constraintTop_toBottomOf="@id/value_line"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -88,12 +90,14 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintLeft_toRightOf="@+id/amount_et"
-            app:layout_constraintTop_toBottomOf="@id/value_line"/>
+            app:layout_constraintTop_toBottomOf="@id/value_line"
+            app:layout_constraintBottom_toBottomOf="@id/amount_et"/>
 
         <TextView
             android:id="@+id/contact_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Contact"
@@ -124,6 +128,7 @@
             android:id="@+id/dates_tv"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Dates"
