@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -66,8 +68,11 @@ public class OverviewTabFragment extends Fragment {
         // TODO Needs to fix currency
         Float payValue = mItemViewModel.getPaySum().getValue();
         Float receiveValue = mItemViewModel.getReceiveSum().getValue();
-        String payString = payValue == null ? "$0.00" : "$" + payValue;
-        String receiveString = receiveValue == null ? "$0.00" : "$" + receiveValue;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+
+        String payString = payValue == null ? "$0.00" : "$" + df.format(payValue);
+        String receiveString = receiveValue == null ? "$0.00" : "$" + df.format(receiveValue);
 
         receiveTextView.setText(receiveString);
         payTextView.setText(payString);
