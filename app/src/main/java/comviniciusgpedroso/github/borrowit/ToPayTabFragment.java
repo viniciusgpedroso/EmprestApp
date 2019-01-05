@@ -59,7 +59,7 @@ public class ToPayTabFragment extends Fragment {
         // Add an observer on the LiveData returned by getAllItems.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        mItemViewModel.getAllItems().observe(this, new Observer<List<Item>>() {
+        mItemViewModel.getAllPayItems().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(@Nullable List<Item> items) {
                 // Update the cached copy of the words in the adapter

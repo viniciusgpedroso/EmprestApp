@@ -69,6 +69,7 @@ public class OverviewTabFragment extends Fragment {
         Float payValue = mItemViewModel.getPaySum().getValue();
         Float receiveValue = mItemViewModel.getReceiveSum().getValue();
         DecimalFormat df = new DecimalFormat("#.##");
+        df.setMinimumFractionDigits(2);
         df.setRoundingMode(RoundingMode.CEILING);
 
         String payString = payValue == null ? "$0.00" : "$" + df.format(payValue);

@@ -13,6 +13,8 @@ import java.util.List;
 public class ItemViewModel extends AndroidViewModel {
     private ItemRepository mRepository;
     private LiveData<List<Item>> mAllItems;
+    private LiveData<List<Item>> mAllPayItems;
+    private LiveData<List<Item>> mAllReceiveItems;
     private LiveData<Float> paySum;
     private LiveData<Float> receiveSum;
 
@@ -20,12 +22,22 @@ public class ItemViewModel extends AndroidViewModel {
         super(application);
         mRepository = new ItemRepository(application);
         mAllItems = mRepository.getAllItems();
+        mAllPayItems = mRepository.getAllPayItems();
+        mAllReceiveItems = mRepository.getAllReceiveItems();
         paySum = mRepository.getPaySum();
         receiveSum = mRepository.getReceiveSum();
     }
 
     public LiveData<List<Item>> getAllItems() {
         return mAllItems;
+    }
+
+    LiveData<List<Item>> getAllPayItems() {
+        return mAllPayItems;
+    }
+
+    LiveData<List<Item>> getAllReceiveItems() {
+        return mAllReceiveItems;
     }
 
     public LiveData<Float> getPaySum() {

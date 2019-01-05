@@ -13,19 +13,32 @@ import java.util.List;
 public class ItemRepository {
     private ItemDao mItemDao;
     private LiveData<List<Item>> mAllItems;
+    private LiveData<List<Item>> mAllPayItems;
+    private LiveData<List<Item>> mAllReceiveItems;
     private LiveData<Float> paySum;
     private LiveData<Float> receiveSum;
 
+    // TODO Check if AllItems is used anywhere
     ItemRepository(Application application) {
         ItemRoomDatabase db = ItemRoomDatabase.getDatabase(application);
         mItemDao = db.itemDao();
         mAllItems = mItemDao.getAllItems();
+        mAllPayItems = mItemDao.getAllPayItems();
+        mAllReceiveItems = mItemDao.getAllReceiveItems();
         paySum = mItemDao.getPaySum();
         receiveSum = mItemDao.getReceiveSum();
     }
 
     LiveData<List<Item>> getAllItems() {
         return mAllItems;
+    }
+
+    LiveData<List<Item>> getAllPayItems() {
+        return mAllPayItems;
+    }
+
+    LiveData<List<Item>> getAllReceiveItems() {
+        return mAllReceiveItems;
     }
 
     LiveData<Float> getPaySum() {
