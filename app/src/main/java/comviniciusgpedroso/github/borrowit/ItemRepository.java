@@ -13,15 +13,27 @@ import java.util.List;
 public class ItemRepository {
     private ItemDao mItemDao;
     private LiveData<List<Item>> mAllItems;
+    private LiveData<Float> paySum;
+    private LiveData<Float> receiveSum;
 
     ItemRepository(Application application) {
         ItemRoomDatabase db = ItemRoomDatabase.getDatabase(application);
         mItemDao = db.itemDao();
         mAllItems = mItemDao.getAllItems();
+        paySum = mItemDao.getPaySum();
+        receiveSum = mItemDao.getReceiveSum();
     }
 
     LiveData<List<Item>> getAllItems() {
         return mAllItems;
+    }
+
+    LiveData<Float> getPaySum() {
+        return paySum;
+    }
+
+    LiveData<Float> getReceiveSum() {
+        return receiveSum;
     }
 
     public void insert (Item item) {

@@ -21,23 +21,30 @@ public interface ItemDao {
     @Query("DELETE FROM item_table")
     void deleteAll();
 
-    @Query("SELECT * from item_table ORDER BY borrowDate ASC")
+    @Query("SELECT * " +
+            "FROM item_table " +
+            "ORDER BY borrowDate ASC")
     LiveData<List<Item>> getAllItems();
 
-    @Query("SELECT * from item_table WHERE isToReceive = true ORDER BY borrowDate ASC")
+    @Query("SELECT * " +
+            "FROM item_table " +
+            "WHERE isToReceive = 1 " +
+            "ORDER BY borrowDate ASC")
     LiveData<List<Item>> getAllReceiveItems();
 
-    @Query("SELECT * from item_table WHERE isToReceive = false ORDER BY borrowDate ASC")
+    @Query("SELECT * " +
+            "FROM item_table " +
+            "WHERE isToReceive = 0 " +
+            "ORDER BY borrowDate ASC")
     LiveData<List<Item>> getAllPayItems();
 
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
-            "WHERE isToReceive = false AND isObject = false")
-    Float getPaySum();
+            "WHERE isToReceive = 1 AND isObject = 0")
+    LiveData<Float> getPaySum();
 
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
-            "WHERE isToReceive = true AND isObject = false" +
-            "ORDER BY borrowDate ASC")
-    Float getReceiveSum();
+            "WHERE isToReceive = 1 AND isObject = 0")
+    LiveData<Float> getReceiveSum();
 }

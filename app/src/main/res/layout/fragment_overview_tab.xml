@@ -39,6 +39,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/overview_receive_amount_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/initial_overview_value_to_receive"
@@ -77,6 +78,7 @@
 
 
                 <TextView
+                    android:id="@+id/overview_pay_amount_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/initial_overview_value_to_pay"
