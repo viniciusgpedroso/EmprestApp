@@ -43,6 +43,7 @@ public class OverviewTabFragment extends Fragment {
         // Get a new or existing ViewModel from the ViewModelProvider
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
+        // Updates the cards if the values are changed
         mItemViewModel.getPaySum().observe(this, new Observer<Float>() {
             @Override
             public void onChanged(@Nullable Float aFloat) {
@@ -50,7 +51,7 @@ public class OverviewTabFragment extends Fragment {
             }
         });
 
-        mItemViewModel.getPaySum().observe(this, new Observer<Float>() {
+        mItemViewModel.getReceiveSum().observe(this, new Observer<Float>() {
             @Override
             public void onChanged(@Nullable Float aFloat) {
                 updateAmountCards();

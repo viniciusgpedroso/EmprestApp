@@ -41,10 +41,11 @@ public interface ItemDao {
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
             "WHERE isToReceive = 1 AND isObject = 0")
-    LiveData<Float> getPaySum();
+    LiveData<Float> getReceiveSum();
 
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
-            "WHERE isToReceive = 1 AND isObject = 0")
-    LiveData<Float> getReceiveSum();
+            "WHERE isToReceive = 0 AND isObject = 0")
+    LiveData<Float> getPaySum();
+
 }

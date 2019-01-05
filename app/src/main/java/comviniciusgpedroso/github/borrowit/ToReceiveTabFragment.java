@@ -137,9 +137,19 @@ public class ToReceiveTabFragment extends Fragment {
 
         if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             // TODO GET DATA BACK FROM ACTIVITY
+            // If it is done use status == 2, otherwise let the Item class deal with the results
             // Testing new activity
-            Item item = new Item(UUID.randomUUID(), 123.45f, "Testing Test", new Date(), new
-                    Date(), true, false, 1);
+            float valueAmount = data.getFloatExtra(NewItemActivity.VALUE_REPLY, 0);
+            boolean toReceive = data.getBooleanExtra(NewItemActivity.TORECEIVE_REPLY, true);
+            String contact = data.getStringExtra(NewItemActivity.CONTACT_REPLY);
+            Long borrowDateTime = data.getLongExtra(NewItemActivity.BORROW_DATE_REPLY, (new Date()).getTime());
+            Long dueDateTime = data.getLongExtra(NewItemActivity.DUE_DATE_REPLY, (new Date())
+                    .getTime());
+            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity.PAID_REPLY, false) ==
+                    true ? 2 : 0;
+            boolean isObject = false;
+            Item item = new Item(UUID.randomUUID(), valueAmount, contact, new Date(), new
+                    Date(), toReceive, false, alreadyPaidStatus);
             mItemViewModel.insert(item);
         }
         // TODO Create failing result code

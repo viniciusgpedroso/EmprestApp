@@ -18,9 +18,9 @@ import java.util.UUID;
 @Entity(tableName = "item_table")
 public class Item {
     // Status constants
-    private static final int DUE = 0;
-    private static final int OVERDUE = 1;
-    private static final int DONE = 2;
+    public static final int DUE = 0;
+    public static final int OVERDUE = 1;
+    public static final int DONE = 2;
 
 
     @PrimaryKey
@@ -158,8 +158,17 @@ public class Item {
         mIsObject = object;
     }
 
-    // TODO Complete this method
     public int getImageCodeFromStatus() {
-        return R.drawable.ic_after_due_date;
+        switch (mStatus){
+            case OVERDUE:
+                return mIsToReceive ? R.drawable.ic_after_due_date :
+                        R.drawable.ic_pay_after_due_date;
+            case DONE:
+                return mIsToReceive ? R.drawable.ic_checked :
+                        R.drawable.ic_pay_checked;
+            default:
+                return mIsToReceive ? R.drawable.ic_before_due_date :
+                        R.drawable.ic_pay_before_due_date;
+        }
     }
 }
