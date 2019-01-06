@@ -32,9 +32,10 @@ public class NewItemActivity extends AppCompatActivity {
     private EditText valueEditView;
     private EditText contactEditView;
     private CheckBox alreadyPaidCheckBox;
-    // TODO Implement Date Pickers
-    private Date borrowDateView;
-    private Date dueDateView;
+    // Date Default values are now
+    private boolean borrowDatePickerWasChosen = true;
+    private Date borrowDate = new Date();
+    private Date dueDate = new Date();
 
     private boolean toReceive;
     private boolean alreadyPaid;
@@ -64,8 +65,8 @@ public class NewItemActivity extends AppCompatActivity {
                     replyIntent.putExtra(TORECEIVE_REPLY, toReceive);
                     replyIntent.putExtra(PAID_REPLY, alreadyPaid);
                     replyIntent.putExtra(CONTACT_REPLY, contact);
-                    replyIntent.putExtra(BORROW_DATE_REPLY, (new Date()).getTime());
-                    replyIntent.putExtra(DUE_DATE_REPLY, (new Date()).getTime());
+                    replyIntent.putExtra(BORROW_DATE_REPLY, borrowDate.getTime());
+                    replyIntent.putExtra(DUE_DATE_REPLY, dueDate.getTime());
                     setResult(RESULT_OK, replyIntent);
                 }
                 finish();
@@ -80,6 +81,7 @@ public class NewItemActivity extends AppCompatActivity {
      * @param view View that was clicked
      */
     public void showBorrowDatePicker(View view) {
+        borrowDatePickerWasChosen = true;
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "Date Picker");
     }
@@ -91,6 +93,7 @@ public class NewItemActivity extends AppCompatActivity {
      * @param view View that was clicked
      */
     public void showDueDatePicker(View view) {
+        borrowDatePickerWasChosen = false;
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "Date Picker");
     }
@@ -104,7 +107,7 @@ public class NewItemActivity extends AppCompatActivity {
      * @param month Chosen month
      * @param day Chosen day
      */
-    public void processDatePickerResult(int year, int month, int day) {
+    public void processDatePicker(int year, int month, int day) {
         String month_string = Integer.toString(month + 1);
         String day_string = Integer.toString(day);
         String year_string = Integer.toString(year);
@@ -114,5 +117,19 @@ public class NewItemActivity extends AppCompatActivity {
 
         Toast.makeText(this, dateMessage,
                 Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Process the date picker result into strings that can be displayed in
+     * a Toast.
+     * @param chosenDate date chosen by the user trough the DatePickerFragment
+     *                   class
+     */
+    public void processDatePickerResult(Date chosenDate) {
+        if (borrowDatePickerWasChosen) {
+            borrowDate = chosenDate;
+        } else {
+            dueDate = chosenDate;
+        }
     }
 }
