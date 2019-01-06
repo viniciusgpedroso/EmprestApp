@@ -1,5 +1,6 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.support.v4.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -71,4 +73,46 @@ public class NewItemActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Handles the button click to create a new date picker fragment and
+     * show it.
+     *
+     * @param view View that was clicked
+     */
+    public void showBorrowDatePicker(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "Date Picker");
+    }
+
+    /**
+     * Handles the button click to create a new date picker fragment and
+     * show it.
+     *
+     * @param view View that was clicked
+     */
+    public void showDueDatePicker(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "Date Picker");
+    }
+
+
+    /**
+     * Process the date picker result into strings that can be displayed in
+     * a Toast.
+     *
+     * @param year Chosen year
+     * @param month Chosen month
+     * @param day Chosen day
+     */
+    public void processDatePickerResult(int year, int month, int day) {
+        String month_string = Integer.toString(month + 1);
+        String day_string = Integer.toString(day);
+        String year_string = Integer.toString(year);
+        String dateMessage = (day_string +
+                "/" + month_string +
+                "/" + year_string);
+
+        Toast.makeText(this, dateMessage,
+                Toast.LENGTH_SHORT).show();
+    }
 }
