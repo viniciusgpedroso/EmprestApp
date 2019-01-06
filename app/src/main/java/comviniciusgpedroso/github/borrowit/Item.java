@@ -54,10 +54,22 @@ public class Item {
         mContact = contact;
         mBorrowDate = borrowDate;
         mDueDate = dueDate;
-        mStatus = status;
         mIsToReceive = isToReceive;
         mIsObject = isObject;
+        mStatus = status;
+        checkAndSetStatus();
     }
+
+    /**
+     * Checks and sets the status considering the current date, due date and
+     * the DONE status
+     */
+    private void checkAndSetStatus() {
+        if (mStatus != DONE) {
+            mStatus = mDueDate.before(new Date()) ? 1 : 0;
+        }
+    }
+
 
     /*
      * Sets the status to DONE;
@@ -116,7 +128,8 @@ public class Item {
         Calendar cal = Calendar.getInstance();
         cal.setTime(mDueDate);
         int year = cal.get(Calendar.YEAR);
-        String month = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+        String month = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT,
+                Locale.getDefault());
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         return day + " " + month + " " + year;
@@ -159,16 +172,17 @@ public class Item {
     }
 
     public int getImageCodeFromStatus() {
+        checkAndSetStatus();
         switch (mStatus){
-            case OVERDUE:
-                return mIsToReceive ? R.drawable.ic_after_due_date :
-                        R.drawable.ic_pay_after_due_date;
             case DONE:
                 return mIsToReceive ? R.drawable.ic_checked :
                         R.drawable.ic_pay_checked;
-            default:
+            case DUE:
                 return mIsToReceive ? R.drawable.ic_before_due_date :
                         R.drawable.ic_pay_before_due_date;
+            default:
+                return mIsToReceive ? R.drawable.ic_after_due_date :
+                        R.drawable.ic_pay_after_due_date;
         }
     }
 }

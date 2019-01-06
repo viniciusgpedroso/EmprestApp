@@ -136,20 +136,29 @@ public class ToReceiveTabFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            // TODO GET DATA BACK FROM ACTIVITY
-            // If it is done use status == 2, otherwise let the Item class deal with the results
-            // Testing new activity
-            float valueAmount = data.getFloatExtra(NewItemActivity.VALUE_REPLY, 0);
-            boolean toReceive = data.getBooleanExtra(NewItemActivity.TORECEIVE_REPLY, true);
+            // Gets data back from the NewItemActivity Intent
+            float valueAmount = data.getFloatExtra(NewItemActivity
+                    .VALUE_REPLY, 0);
+            boolean toReceive = data.getBooleanExtra(NewItemActivity
+                    .TORECEIVE_REPLY, true);
             String contact = data.getStringExtra(NewItemActivity.CONTACT_REPLY);
-            Long borrowDateTime = data.getLongExtra(NewItemActivity.BORROW_DATE_REPLY, (new Date()).getTime());
-            Long dueDateTime = data.getLongExtra(NewItemActivity.DUE_DATE_REPLY, (new Date())
-                    .getTime());
-            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity.PAID_REPLY, false) ? 2 : 0;
+            Long borrowDateTime = data.getLongExtra(NewItemActivity
+                    .BORROW_DATE_REPLY, (new Date()).getTime());
+            Long dueDateTime = data.getLongExtra(NewItemActivity
+                    .DUE_DATE_REPLY, (new Date()).getTime());
+            // If it is done use status == 2, otherwise let the Item class
+            // deal with the results
+            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
+                    .PAID_REPLY, false) ? 2 : -1;
             boolean isObject = false;
-            Item item = new Item(UUID.randomUUID(), valueAmount, contact, new Date(), new
-                    Date(), toReceive, false, alreadyPaidStatus);
+
+            // Creates a new item and adds to the view model
+            Item item = new Item(UUID.randomUUID(), valueAmount, contact,
+                    Converters.fromTimeStamp(borrowDateTime), Converters
+                    .fromTimeStamp(dueDateTime), toReceive, false,
+                    alreadyPaidStatus);
             mItemViewModel.insert(item);
+
         }
         // TODO Create failing result code
 //        else {

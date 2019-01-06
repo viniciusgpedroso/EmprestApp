@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class ItemCardAdapter extends
     private ViewGroup pr;
 
     public ItemCardAdapter(Context context) {
+        mContext = context;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -52,11 +54,11 @@ public class ItemCardAdapter extends
     public void onBindViewHolder(ItemCardHolder holder, int position) {
         Item currentItem = mItemArrayList.get(position);
 
-        holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus());
         String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
         holder.mValue.setText(valueWithCurrencySymbol);
         holder.mContact.setText(currentItem.getContact());
         holder.mDueDate.setText(currentItem.getSimpleDueDate());
+        holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus());
     }
 
     // getItemCount() is called many times, and when it is first called,
@@ -103,6 +105,8 @@ public class ItemCardAdapter extends
 
             detailIntent.putExtra("amount", currentItem.getAmount());
             detailIntent.putExtra("contact", currentItem.getContact());
+            detailIntent.putExtra("borrowDate", currentItem.getBorrowDate());
+            detailIntent.putExtra("dueDate", currentItem.getDueDate());
 
             pr.getContext().startActivity(detailIntent);
         }
