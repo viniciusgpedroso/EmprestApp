@@ -1,13 +1,9 @@
 package comviniciusgpedroso.github.borrowit;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,11 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         // Set the text for each tab.
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_overview));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_receive));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_pay));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_return));
         // Set the height
 //        ViewGroup.LayoutParams tabParams = tabLayout.getLayoutParams();
 //        tabParams.height = 25;

@@ -145,8 +145,7 @@ public class ToReceiveTabFragment extends Fragment {
             Long borrowDateTime = data.getLongExtra(NewItemActivity.BORROW_DATE_REPLY, (new Date()).getTime());
             Long dueDateTime = data.getLongExtra(NewItemActivity.DUE_DATE_REPLY, (new Date())
                     .getTime());
-            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity.PAID_REPLY, false) ==
-                    true ? 2 : 0;
+            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity.PAID_REPLY, false) ? 2 : 0;
             boolean isObject = false;
             Item item = new Item(UUID.randomUUID(), valueAmount, contact, new Date(), new
                     Date(), toReceive, false, alreadyPaidStatus);

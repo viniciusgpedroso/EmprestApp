@@ -19,7 +19,7 @@
             android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Pay or Receive?"/>
+            android:text="Receive or Return?"/>
 
         <View
             android:id="@+id/radio_horizontal_line"
@@ -50,7 +50,7 @@
                 android:id="@+id/to_pay_rb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To pay" />
+                android:text="To Return" />
         </RadioGroup>
 
         <TextView
