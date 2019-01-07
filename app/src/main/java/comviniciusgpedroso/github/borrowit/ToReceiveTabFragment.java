@@ -123,7 +123,10 @@ public class ToReceiveTabFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 // Remove the item from the dataset
-                // TODO REMOVE FROM DATABASE
+                int position = viewHolder.getAdapterPosition();
+                Item myItem = adapter.getItemAtPosition(position);
+
+                mItemViewModel.deleteItem(myItem);
                 // Notify the adapter
                 adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
             }

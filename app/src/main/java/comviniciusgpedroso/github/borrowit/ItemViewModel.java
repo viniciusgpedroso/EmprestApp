@@ -53,4 +53,8 @@ public class ItemViewModel extends AndroidViewModel {
     }
 
     public void deleteAll() {mRepository.deleteAll();}
+
+    public void deleteItem(Item item) {
+        mRepository.deleteItem(item);
+    }
 }

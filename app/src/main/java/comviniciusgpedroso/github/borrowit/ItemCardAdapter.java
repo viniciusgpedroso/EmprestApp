@@ -52,6 +52,10 @@ public class ItemCardAdapter extends
         holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus());
     }
 
+    public Item getItemAtPosition(int position) {
+        return mItemArrayList.get(position);
+    }
+
     // getItemCount() is called many times, and when it is first called,
     // mItemArrayList has not been updated (means initially, it's null).
     @Override
