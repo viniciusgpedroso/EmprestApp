@@ -164,11 +164,11 @@ public class ToReceiveTabFragment extends Fragment {
 
         }
         // TODO Create failing result code
-//        else {
-//            Toast.makeText(
-//                    mContext,
-//                    "Not saved",
-//                    Toast.LENGTH_LONG).show();
-//        }
+        else {
+            Toast.makeText(
+                    this.getContext(),
+                    "Not saved",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -62,8 +62,8 @@ public class OverviewTabFragment extends Fragment {
         return view;
     }
 
-    /* TODO Add onClick listeners for the @+id/overview_pay and
-    @+id/overview_receive */
+    /* TODO Add onClick listeners (Calendar os move to the tab) for the
+    @+id/overview_pay and @+id/overview_receive */
 
     public void updateAmountCards() {
         // TODO Needs to fix currency
