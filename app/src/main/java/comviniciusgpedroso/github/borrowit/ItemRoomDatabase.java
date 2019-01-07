@@ -65,7 +65,7 @@ public abstract class ItemRoomDatabase extends RoomDatabase {
             // Start the app with a clean database every time.
             // Not needed if you only populate the database
             // when it is first created
-            mItemDao.deleteAll();
+            // mItemDao.deleteAll();
 
 //            // Populates with placeholder data
 //            for (int i = 0; i <= placeholderData.size() - 1; i++) {
