@@ -18,4 +18,5 @@
     <string name="item_placeholder_contact">John Smith</string>
     <string name="item_placeholder_value">$ 123.45</string>
     <string name="action_sorting">Sort</string>
+    <string name="not_saved_toast">Not saved</string>
 </resources>

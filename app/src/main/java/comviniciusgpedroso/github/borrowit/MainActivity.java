@@ -1,6 +1,9 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,11 +15,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import java.util.Date;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
 
+    private ItemViewModel mItemViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +83,19 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // Get a new or existing ViewModel from the ViewModelProvider
+        mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewItemActivity
+                        .class);
+                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
+
+            }
+        });
 
     }
 
@@ -129,5 +150,39 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Gets data back from the NewItemActivity Intent
+            float valueAmount = data.getFloatExtra(NewItemActivity
+                    .VALUE_REPLY, 0);
+            boolean toReceive = data.getBooleanExtra(NewItemActivity
+                    .TORECEIVE_REPLY, true);
+            String contact = data.getStringExtra(NewItemActivity.CONTACT_REPLY);
+            Long borrowDateTime = data.getLongExtra(NewItemActivity
+                    .BORROW_DATE_REPLY, (new Date()).getTime());
+            Long dueDateTime = data.getLongExtra(NewItemActivity
+                    .DUE_DATE_REPLY, (new Date()).getTime());
+            // If it is done use status == 2, otherwise let the Item class
+            // deal with the results
+            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
+                    .PAID_REPLY, false) ? 2 : -1;
+            boolean isObject = false;
+
+            // Creates a new item and adds to the view model
+            Item item = new Item(UUID.randomUUID(), valueAmount, contact,
+                    Converters.fromTimeStamp(borrowDateTime), Converters
+                    .fromTimeStamp(dueDateTime), toReceive, false,
+                    alreadyPaidStatus);
+            mItemViewModel.insert(item);
+
+        }
+        else {
+            Toast.makeText(
+                    this,
+                    R.string.not_saved_toast,
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 }

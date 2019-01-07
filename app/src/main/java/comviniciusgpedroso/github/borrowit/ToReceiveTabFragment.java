@@ -43,7 +43,6 @@ public class ToReceiveTabFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,15 +77,6 @@ public class ToReceiveTabFragment extends Fragment {
         // Attach the helper to the RecyclerView
         helper.attachToRecyclerView(mRecyclerView);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NewItemActivity.class);
-                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
-
-            }
-        });
 
         return view;
     }
@@ -134,41 +124,4 @@ public class ToReceiveTabFragment extends Fragment {
         return helper;
     }
 
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            // Gets data back from the NewItemActivity Intent
-            float valueAmount = data.getFloatExtra(NewItemActivity
-                    .VALUE_REPLY, 0);
-            boolean toReceive = data.getBooleanExtra(NewItemActivity
-                    .TORECEIVE_REPLY, true);
-            String contact = data.getStringExtra(NewItemActivity.CONTACT_REPLY);
-            Long borrowDateTime = data.getLongExtra(NewItemActivity
-                    .BORROW_DATE_REPLY, (new Date()).getTime());
-            Long dueDateTime = data.getLongExtra(NewItemActivity
-                    .DUE_DATE_REPLY, (new Date()).getTime());
-            // If it is done use status == 2, otherwise let the Item class
-            // deal with the results
-            int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
-                    .PAID_REPLY, false) ? 2 : -1;
-            boolean isObject = false;
-
-            // Creates a new item and adds to the view model
-            Item item = new Item(UUID.randomUUID(), valueAmount, contact,
-                    Converters.fromTimeStamp(borrowDateTime), Converters
-                    .fromTimeStamp(dueDateTime), toReceive, false,
-                    alreadyPaidStatus);
-            mItemViewModel.insert(item);
-
-        }
-        // TODO Create failing result code
-        else {
-            Toast.makeText(
-                    this.getContext(),
-                    "Not saved",
-                    Toast.LENGTH_LONG).show();
-        }
-    }
 }

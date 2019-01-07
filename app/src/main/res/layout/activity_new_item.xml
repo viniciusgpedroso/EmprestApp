@@ -166,6 +166,7 @@
             app:layout_constraintTop_toBottomOf="@+id/dates_line"
             app:layout_constraintStart_toEndOf="@id/borrow_date_btn"/>
 
+        <!--TODO Change this button to a fab button with a check mark-->
         <Button
             android:id="@+id/button_save"
             android:text="DONE"
