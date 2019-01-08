@@ -186,12 +186,13 @@ public class MainActivity extends AppCompatActivity
             int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
                     .PAID_REPLY, false) ? 2 : -1;
             boolean isObject = false;
+            String emptyStringObject = "";
 
             // Creates a new item and adds to the view model
             Item item = new Item(UUID.randomUUID(), valueAmount, contact,
                     Converters.fromTimeStamp(borrowDateTime), Converters
                     .fromTimeStamp(dueDateTime), toReceive, false,
-                    alreadyPaidStatus);
+                    emptyStringObject, alreadyPaidStatus);
             mItemViewModel.insert(item);
 
         }

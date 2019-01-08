@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/overview_receive_amount_tv"
@@ -44,7 +44,18 @@
                         android:layout_height="wrap_content"
                         android:text="@string/initial_overview_value_to_receive"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/overview_text_size" />
+                        android:textSize="@dimen/overview_text_size"
+                        android:layout_gravity="center_horizontal"/>
+
+
+                    <TextView
+                        android:id="@+id/overview_receive_objects_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/initial_overview_object_to_receive"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/overview_text_size"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -81,9 +92,19 @@
                     android:id="@+id/overview_pay_amount_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/initial_overview_value_to_pay"
                     android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/overview_text_size" />
+
+                <TextView
+                    android:id="@+id/overview_return_objects_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/initial_overview_object_to_receive"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="@dimen/overview_text_size"/>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>

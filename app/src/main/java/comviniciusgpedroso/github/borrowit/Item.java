@@ -46,17 +46,21 @@ public class Item {
     @ColumnInfo(name = "isObject")
     private boolean mIsObject;
 
-    public Item(@NonNull UUID id, @NonNull Float amount, String contact, @NonNull Date
-            borrowDate, @NonNull Date dueDate, boolean isToReceive, boolean isObject, int
-            status) {
-        mId = id;
-        mAmount = amount;
-        mContact = contact;
-        mBorrowDate = borrowDate;
-        mDueDate = dueDate;
-        mIsToReceive = isToReceive;
-        mIsObject = isObject;
-        mStatus = status;
+    @ColumnInfo(name = "objectDescription")
+    private String objectDescription;
+
+    public Item(@NonNull UUID id, @NonNull Float amount, String contact,
+                @NonNull Date borrowDate, @NonNull Date dueDate, boolean isToReceive, boolean
+            isObject, String objectDescription, int status) {
+        this.mId = id;
+        this.mAmount = amount;
+        this.mContact = contact;
+        this.mBorrowDate = borrowDate;
+        this.mDueDate = dueDate;
+        this.mIsToReceive = isToReceive;
+        this.mIsObject = isObject;
+        this.mStatus = status;
+        this.objectDescription = objectDescription;
         checkAndSetStatus();
     }
 
@@ -169,6 +173,14 @@ public class Item {
 
     public void setIsObject(boolean object) {
         mIsObject = object;
+    }
+
+    public String getObjectDescription() {
+        return objectDescription;
+    }
+
+    public void setObjectDescription(String objectDescription) {
+        this.objectDescription = objectDescription;
     }
 
     public int getImageCodeFromStatus() {
