@@ -21,4 +21,7 @@
     <string name="not_saved_toast">Not saved</string>
     <string name="enable_notification">Enable Overdue Notification</string>
     <string name="enable_notification_summary">Notification when an item is overdue</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
