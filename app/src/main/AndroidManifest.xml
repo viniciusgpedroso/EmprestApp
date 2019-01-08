@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".ReceiveDetailActivity" />
         <activity android:name=".PayDetailActivity" />
-        <activity android:name=".NewItemActivity"></activity>
+        <activity android:name=".NewItemActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
