@@ -1,6 +1,7 @@
 package comviniciusgpedroso.github.borrowit;
 
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -107,6 +108,7 @@ public class ToPayTabFragment extends Fragment {
              */
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                // TODO Fix alert dialog
                 // Remove the item from the dataset
                 int position = viewHolder.getAdapterPosition();
                 Item myItem = adapter.getItemAtPosition(position);
