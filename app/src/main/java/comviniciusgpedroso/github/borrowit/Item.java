@@ -18,8 +18,8 @@ import java.util.UUID;
 @Entity(tableName = "item_table")
 public class Item {
     // Status constants
-    public static final int DUE = 0;
-    public static final int OVERDUE = 1;
+    public static final int OVERDUE = 0;
+    public static final int DUE = 1;
     public static final int DONE = 2;
 
 
@@ -66,7 +66,7 @@ public class Item {
      */
     private void checkAndSetStatus() {
         if (mStatus != DONE) {
-            mStatus = mDueDate.before(new Date()) ? 1 : 0;
+            mStatus = mDueDate.before(new Date()) ? 0 : 1;
         }
     }
 

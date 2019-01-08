@@ -19,4 +19,6 @@
     <string name="item_placeholder_value">$ 123.45</string>
     <string name="action_sorting">Sort</string>
     <string name="not_saved_toast">Not saved</string>
+    <string name="enable_notification">Enable Overdue Notification</string>
+    <string name="enable_notification_summary">Notification when an item is overdue</string>
 </resources>

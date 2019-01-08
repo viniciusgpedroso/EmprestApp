@@ -27,29 +27,29 @@ public interface ItemDao {
 
     @Query("SELECT * " +
             "FROM item_table " +
-            "ORDER BY borrowDate ASC")
+            "ORDER BY status, borrowDate DESC")
     LiveData<List<Item>> getAllItems();
 
     @Query("SELECT * " +
             "FROM item_table " +
             "WHERE isToReceive = 1 " +
-            "ORDER BY borrowDate ASC")
+            "ORDER BY status, borrowDate DESC")
     LiveData<List<Item>> getAllReceiveItems();
 
     @Query("SELECT * " +
             "FROM item_table " +
             "WHERE isToReceive = 0 " +
-            "ORDER BY borrowDate ASC")
+            "ORDER BY status, borrowDate DESC")
     LiveData<List<Item>> getAllPayItems();
 
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
-            "WHERE isToReceive = 1 AND isObject = 0")
+            "WHERE isToReceive = 1 AND isObject = 0 AND status != 2")
     LiveData<Float> getReceiveSum();
 
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
-            "WHERE isToReceive = 0 AND isObject = 0")
+            "WHERE isToReceive = 0 AND isObject = 0 AND status != 2")
     LiveData<Float> getPaySum();
 
 }
