@@ -6,4 +6,6 @@
         android:key="switch_notifications"
         android:title="@string/enable_notification"
         android:summary="@string/enable_notification_summary"/>
+
+
 </PreferenceScreen>

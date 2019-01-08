@@ -91,9 +91,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NewItemActivity
-                        .class);
-                startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
+                addNewItemActivity();
 
             }
         });
@@ -105,7 +103,7 @@ public class MainActivity extends AppCompatActivity
                 .PreferenceManager.getDefaultSharedPreferences(this);
         Boolean switchNotificationPref = sharedPref.getBoolean
                 (SettingsActivity.KEY_PREF_NOTIFICATION_SWITCH, false);
-        
+
 
     }
 
@@ -148,7 +146,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            // Handle the camera action
+            addNewItemActivity();
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
@@ -160,6 +158,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addNewItemActivity() {
+        Intent intent = new Intent(MainActivity.this, NewItemActivity
+                .class);
+        startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
