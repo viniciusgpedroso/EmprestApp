@@ -2,6 +2,7 @@ package comviniciusgpedroso.github.borrowit;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -100,6 +101,11 @@ public class MainActivity extends AppCompatActivity
         // Settings
         android.support.v7.preference.PreferenceManager.setDefaultValues
                 (this, R.xml.preferences, false);
+        SharedPreferences sharedPref = android.support.v7.preference
+                .PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean switchNotificationPref = sharedPref.getBoolean
+                (SettingsActivity.KEY_PREF_NOTIFICATION_SWITCH, false);
+        
 
     }
 
