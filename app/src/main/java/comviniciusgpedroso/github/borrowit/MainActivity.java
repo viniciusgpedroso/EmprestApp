@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // Settings
+        android.support.v7.preference.PreferenceManager.setDefaultValues
+                (this, R.xml.preferences, false);
+
     }
 
     @Override
@@ -140,7 +144,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_add) {
             // Handle the camera action
         } else if (id == R.id.nav_settings) {
-
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
         } else if (id == R.id.nav_schedule) {
 
         }
