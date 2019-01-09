@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
 
     private ItemViewModel mItemViewModel;
+    private boolean isFABOpen;
+    FloatingActionButton fab;
+    FloatingActionButton fabMoney;
+    FloatingActionButton fabObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +91,22 @@ public class MainActivity extends AppCompatActivity
         // Get a new or existing ViewModel from the ViewModelProvider
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        // Menu of action buttons
+        isFABOpen = false;
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabMoney = (FloatingActionButton) findViewById(R
+                .id.fab_money);
+        fabObject = (FloatingActionButton) findViewById(R
+                .id.fab_object);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNewItemActivity();
+                if(!isFABOpen) {
+                    showFABMenu();
+                } else {
+                    closeFABMenu();
+                }
+                //addNewItemActivity();
 
             }
         });
@@ -160,6 +175,22 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void showFABMenu() {
+        isFABOpen = true;
+        fab.animate().translationY(0);
+        fabMoney.animate().translationY(-getResources().getDimension(R.dimen
+                .standard_105));
+        fabObject.animate().translationY(-getResources().getDimension(R.dimen
+                .standard_155));
+    }
+
+    private void closeFABMenu() {
+        isFABOpen = false;
+        fab.animate().translationY(0);
+        fab.animate().translationY(0);
+        fab.animate().translationY(0);
+    }
+
     public void addNewItemActivity() {
         Intent intent = new Intent(MainActivity.this, NewItemActivity
                 .class);
@@ -184,7 +215,7 @@ public class MainActivity extends AppCompatActivity
             // If it is done use status == 2, otherwise let the Item class
             // deal with the results
             int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
-                    .PAID_REPLY, false) ? 2 : -1;
+                    .PAID_REPLY, false) ? Item.DONE : -1;
             boolean isObject = false;
             String emptyStringObject = "";
 

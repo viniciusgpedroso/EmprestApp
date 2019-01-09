@@ -45,13 +45,13 @@ public class Item {
     private boolean mIsToReceive;
     @ColumnInfo(name = "isObject")
     private boolean mIsObject;
-
     @ColumnInfo(name = "objectDescription")
     private String objectDescription;
 
     public Item(@NonNull UUID id, @NonNull Float amount, String contact,
-                @NonNull Date borrowDate, @NonNull Date dueDate, boolean isToReceive, boolean
-            isObject, String objectDescription, int status) {
+                @NonNull Date borrowDate, @NonNull Date dueDate,
+                boolean isToReceive, boolean isObject, String
+                        objectDescription, int status) {
         this.mId = id;
         this.mAmount = amount;
         this.mContact = contact;
@@ -73,7 +73,6 @@ public class Item {
             mStatus = mDueDate.before(new Date()) ? 0 : 1;
         }
     }
-
 
     /*
      * Sets the status to DONE;

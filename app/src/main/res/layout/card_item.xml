@@ -11,8 +11,8 @@
         android:layout_margin="8dp"
         android:padding="16dp"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="6dp">
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardElevation="@dimen/cardElevation">
 
         <!--TODO Add a filling bar with start date and due date-->
         <LinearLayout
