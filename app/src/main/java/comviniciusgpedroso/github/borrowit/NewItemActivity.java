@@ -43,7 +43,7 @@ public class NewItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_item);
+        setContentView(R.layout.activity_new_item_money);
 
         radioGroup = (RadioGroup) findViewById(R.id.pay_radio_group);
         valueEditView = (EditText) findViewById(R.id.amount_et);
