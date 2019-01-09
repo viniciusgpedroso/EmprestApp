@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -27,10 +28,14 @@ public class MainActivity extends AppCompatActivity
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
 
     private ItemViewModel mItemViewModel;
-    private boolean isFABOpen;
-    FloatingActionButton fab;
-    FloatingActionButton fabMoney;
-    FloatingActionButton fabObject;
+
+    private boolean fabExpanded = false;
+    FloatingActionButton fabAdd;
+    FloatingActionButton fabAddMoney;
+    FloatingActionButton fabAddObject;
+    private LinearLayout layoutFabAdd;
+    private LinearLayout layoutFabAddMoney;
+    private LinearLayout layoutFabAddObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,24 +97,27 @@ public class MainActivity extends AppCompatActivity
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
         // Menu of action buttons
-        isFABOpen = false;
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fabMoney = (FloatingActionButton) findViewById(R
-                .id.fab_money);
-        fabObject = (FloatingActionButton) findViewById(R
-                .id.fab_object);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabAdd = (FloatingActionButton) this.findViewById(R.id.fab);
+
+        layoutFabAddObject = (LinearLayout) this.findViewById(R.id
+                .layoutFabObject);
+        layoutFabAddMoney = (LinearLayout) this.findViewById(R.id
+                .layoutFabMoney);
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABOpen) {
-                    showFABMenu();
+                if(fabExpanded) {
+                    closeSubMenusFab();
                 } else {
-                    closeFABMenu();
+                    openSubMenusFab();
                 }
                 //addNewItemActivity();
 
             }
         });
+
+        closeSubMenusFab();
 
         // Settings
         android.support.v7.preference.PreferenceManager.setDefaultValues
@@ -175,20 +183,21 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void showFABMenu() {
-        isFABOpen = true;
-        fab.animate().translationY(0);
-        fabMoney.animate().translationY(-getResources().getDimension(R.dimen
-                .standard_105));
-        fabObject.animate().translationY(-getResources().getDimension(R.dimen
-                .standard_155));
+    /**
+     * Collapses Object and Money submenus from the addFab
+     */
+    private void closeSubMenusFab() {
+        layoutFabAddMoney.setVisibility(View.INVISIBLE);
+        layoutFabAddObject.setVisibility(View.INVISIBLE);
+        fabAdd.setImageResource(R.drawable.ic_add_white_24dp);
+        fabExpanded = false;
     }
 
-    private void closeFABMenu() {
-        isFABOpen = false;
-        fab.animate().translationY(0);
-        fab.animate().translationY(0);
-        fab.animate().translationY(0);
+    private void openSubMenusFab() {
+        layoutFabAddMoney.setVisibility(View.VISIBLE);
+        layoutFabAddObject.setVisibility(View.VISIBLE);
+        fabAdd.setImageResource(R.drawable.ic_close_white_24dp);
+        fabExpanded = true;
     }
 
     public void addNewItemActivity() {
