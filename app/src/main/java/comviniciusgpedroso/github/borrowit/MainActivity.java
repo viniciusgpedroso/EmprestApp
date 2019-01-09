@@ -97,7 +97,9 @@ public class MainActivity extends AppCompatActivity
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
         // Menu of action buttons
-        fabAdd = (FloatingActionButton) this.findViewById(R.id.fab);
+        fabAdd = this.findViewById(R.id.fab);
+        fabAddMoney = this.findViewById(R.id.fabMoney);
+        fabAddObject = this.findViewById(R.id.fabObject);
 
         layoutFabAddObject = (LinearLayout) this.findViewById(R.id
                 .layoutFabObject);
@@ -114,6 +116,20 @@ public class MainActivity extends AppCompatActivity
                 }
                 //addNewItemActivity();
 
+            }
+        });
+
+        fabAddMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewItemActivity(false);
+            }
+        });
+
+        fabAddObject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewItemActivity(true);
             }
         });
 
@@ -200,7 +216,9 @@ public class MainActivity extends AppCompatActivity
         fabExpanded = true;
     }
 
-    public void addNewItemActivity() {
+    public void addNewItemActivity(boolean isObject) {
+        // TODO Add isObject to the intent and deal with the layout for
+        // NewItemActivity
         Intent intent = new Intent(MainActivity.this, NewItemActivity
                 .class);
         startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
