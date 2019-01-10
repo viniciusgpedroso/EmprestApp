@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -26,6 +28,8 @@ public class OverviewTabFragment extends Fragment {
     private ItemViewModel mItemViewModel;
     private TextView receiveTextView;
     private TextView payTextView;
+    private TextView objectReceiveTextView;
+    private TextView objectReturnTextView;
 
     public OverviewTabFragment() {
         // Required empty public constructor
@@ -39,6 +43,8 @@ public class OverviewTabFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_overview_tab, container, false);
         receiveTextView = view.findViewById(R.id.overview_receive_amount_tv);
         payTextView = view.findViewById(R.id.overview_pay_amount_tv);
+        objectReceiveTextView = view.findViewById(R.id.overview_receive_objects_tv);
+        objectReturnTextView = view.findViewById(R.id.overview_return_objects_tv);
 
         // Get a new or existing ViewModel from the ViewModelProvider
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
@@ -54,6 +60,20 @@ public class OverviewTabFragment extends Fragment {
         mItemViewModel.getReceiveSum().observe(this, new Observer<Float>() {
             @Override
             public void onChanged(@Nullable Float aFloat) {
+                updateAmountCards();
+            }
+        });
+
+        mItemViewModel.getObjectReceiveSum().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                updateAmountCards();
+            }
+        });
+
+        mItemViewModel.getObjectReturnSum().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
                 updateAmountCards();
             }
         });
@@ -78,6 +98,17 @@ public class OverviewTabFragment extends Fragment {
 
         receiveTextView.setText(receiveString);
         payTextView.setText(payString);
+
+        Integer amountObjectsReceive = mItemViewModel.getObjectReceiveSum().getValue();
+        Integer amountObjectReturn = mItemViewModel.getObjectReturnSum().getValue();
+
+        String objectsReceiveString = amountObjectsReceive == null ? "0 items" :
+                amountObjectsReceive + " items";
+        String objectsReturnString = amountObjectReturn == null ? "0 items" : amountObjectReturn
+                + " items";
+
+        objectReceiveTextView.setText(objectsReceiveString);
+        objectReturnTextView.setText(objectsReturnString);
     }
 
 }
