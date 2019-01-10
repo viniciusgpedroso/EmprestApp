@@ -19,6 +19,8 @@ import static comviniciusgpedroso.github.borrowit.MainActivity.NEW_ITEM_ACTIVITY
 public class NewItemActivity extends AppCompatActivity {
     public static final String TORECEIVE_REPLY =
             "comviniciusgpedroso.github.borrowit.TORECEIVEREPLY";
+    public static final String ISOBJECT_REPLY =
+            "comviniciusgpedroso.github.borrowit.ISOBJECTREPLY";
     public static final String VALUE_REPLY =
             "comviniciusgpedroso.github.borrowit.VALUEREPLY";
     public static final String OBJECT_DESCRIPTION_REPLY =
@@ -44,6 +46,7 @@ public class NewItemActivity extends AppCompatActivity {
 
     private boolean toReceive;
     private boolean alreadyPaid;
+    private boolean isObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +55,11 @@ public class NewItemActivity extends AppCompatActivity {
 
         if(intent.getBooleanExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, false)) {
             setContentView(R.layout.activity_new_item_object);
+            isObject = true;
             createsNewObjectItem();
         } else {
             setContentView(R.layout.activity_new_item_money);
+            isObject = false;
             createsNewMoneyItem();
         }
 
@@ -79,6 +84,8 @@ public class NewItemActivity extends AppCompatActivity {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     replyIntent.putExtra(VALUE_REPLY, value);
+                    replyIntent.putExtra(OBJECT_DESCRIPTION_REPLY, "NOT AN OBJECT");
+                    replyIntent.putExtra(ISOBJECT_REPLY, isObject);
                     replyIntent.putExtra(TORECEIVE_REPLY, toReceive);
                     replyIntent.putExtra(PAID_REPLY, alreadyPaid);
                     replyIntent.putExtra(CONTACT_REPLY, contact);
@@ -110,6 +117,7 @@ public class NewItemActivity extends AppCompatActivity {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
                     replyIntent.putExtra(OBJECT_DESCRIPTION_REPLY, objectDescr);
+                    replyIntent.putExtra(ISOBJECT_REPLY, isObject);
                     replyIntent.putExtra(TORECEIVE_REPLY, toReceive);
                     replyIntent.putExtra(PAID_REPLY, alreadyPaid);
                     replyIntent.putExtra(CONTACT_REPLY, contact);

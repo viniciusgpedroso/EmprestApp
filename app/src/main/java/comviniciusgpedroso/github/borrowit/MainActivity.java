@@ -245,14 +245,14 @@ public class MainActivity extends AppCompatActivity
             // deal with the results
             int alreadyPaidStatus = data.getBooleanExtra(NewItemActivity
                     .PAID_REPLY, false) ? Item.DONE : -1;
-            boolean isObject = false;
-            String emptyStringObject = "";
+            boolean isObject = data.getBooleanExtra(NewItemActivity.ISOBJECT_REPLY, false);
+            String objectDescr = data.getStringExtra(NewItemActivity.OBJECT_DESCRIPTION_REPLY);
 
             // Creates a new item and adds to the view model
             Item item = new Item(UUID.randomUUID(), valueAmount, contact,
                     Converters.fromTimeStamp(borrowDateTime), Converters
-                    .fromTimeStamp(dueDateTime), toReceive, false,
-                    emptyStringObject, alreadyPaidStatus);
+                    .fromTimeStamp(dueDateTime), toReceive, isObject,
+                    objectDescr, alreadyPaidStatus);
             mItemViewModel.insert(item);
 
         }

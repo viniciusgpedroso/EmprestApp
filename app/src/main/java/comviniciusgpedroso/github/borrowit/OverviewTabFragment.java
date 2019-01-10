@@ -102,10 +102,15 @@ public class OverviewTabFragment extends Fragment {
         Integer amountObjectsReceive = mItemViewModel.getObjectReceiveSum().getValue();
         Integer amountObjectReturn = mItemViewModel.getObjectReturnSum().getValue();
 
-        String objectsReceiveString = amountObjectsReceive == null ? "0 items" :
-                amountObjectsReceive + " items";
-        String objectsReturnString = amountObjectReturn == null ? "0 items" : amountObjectReturn
-                + " items";
+        String objectsReceiveString;
+        String objectsReturnString;
+
+        objectsReceiveString = amountObjectsReceive == null ? "0 items" :
+                (amountObjectsReceive == 1 ? amountObjectsReceive + " item" :
+                        amountObjectsReceive + " items");
+        objectsReturnString = amountObjectReturn == null ? "0 items" :
+                (amountObjectReturn == 1 ? amountObjectReturn + " item" :
+                        amountObjectReturn + " items");
 
         objectReceiveTextView.setText(objectsReceiveString);
         objectReturnTextView.setText(objectsReturnString);
