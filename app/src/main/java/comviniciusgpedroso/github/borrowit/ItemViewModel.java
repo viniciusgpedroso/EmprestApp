@@ -27,12 +27,12 @@ public class ItemViewModel extends AndroidViewModel {
         paySum = mRepository.getPaySum();
         receiveSum = mRepository.getReceiveSum();
     }
-
+    
     public LiveData<List<Item>> getAllItems() {
         return mAllItems;
     }
 
-    LiveData<List<Item>> getAllPayItems() {
+        LiveData<List<Item>> getAllPayItems() {
         return mAllPayItems;
     }
 
