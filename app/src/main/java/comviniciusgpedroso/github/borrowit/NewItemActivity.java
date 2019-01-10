@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import static comviniciusgpedroso.github.borrowit.MainActivity.NEW_ITEM_ACTIVITY_IS_OBJECT;
+
 public class NewItemActivity extends AppCompatActivity {
     public static final String TORECEIVE_REPLY =
             "comviniciusgpedroso.github.borrowit.TORECEIVEREPLY";
@@ -43,8 +45,19 @@ public class NewItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_item_money);
+        Intent intent = getIntent();
 
+        if(intent.getBooleanExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, false)) {
+            setContentView(R.layout.activity_new_item_object);
+        } else {
+            setContentView(R.layout.activity_new_item_money);
+            createsNewMoneyItem();
+        }
+
+
+    }
+
+    private void createsNewMoneyItem() {
         radioGroup = (RadioGroup) findViewById(R.id.pay_radio_group);
         valueEditView = (EditText) findViewById(R.id.amount_et);
         contactEditView = (EditText) findViewById(R.id.contact_et);

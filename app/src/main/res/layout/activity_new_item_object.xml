@@ -76,7 +76,7 @@
             android:id="@+id/object_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Object borrowed"
+            android:hint="Borrowed object description"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:inputType="textCapWords"
@@ -88,12 +88,11 @@
             android:id="@+id/already_paid_cb_object"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already paid?"
+            android:text="Already Returned?"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            app:layout_constraintLeft_toRightOf="@+id/object_et"
-            app:layout_constraintTop_toBottomOf="@id/value_line_object"
-            app:layout_constraintBottom_toBottomOf="@id/object_et"/>
+            app:layout_constraintTop_toBottomOf="@id/object_et"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/contact_tv_object"
@@ -103,7 +102,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Contact"
-            app:layout_constraintTop_toBottomOf="@id/object_et"/>
+            app:layout_constraintTop_toBottomOf="@id/already_paid_cb_object"/>
 
         <View
             android:id="@+id/contact_line_object"
