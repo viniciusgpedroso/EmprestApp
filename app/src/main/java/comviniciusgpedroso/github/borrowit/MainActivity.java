@@ -26,8 +26,6 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
-    public static final String NEW_ITEM_ACTIVITY_IS_OBJECT =
-            "comviniciusgpedroso.github.borrowit.IS_OBJECT";
 
     private ItemViewModel mItemViewModel;
 
@@ -116,6 +114,8 @@ public class MainActivity extends AppCompatActivity
                 } else {
                     openSubMenusFab();
                 }
+                //addNewItemActivity();
+
             }
         });
 
@@ -185,8 +185,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            // TODO add object item in the nav drawer
-            addNewItemActivity(false);
+            addNewItemActivity();
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
@@ -222,7 +221,6 @@ public class MainActivity extends AppCompatActivity
         // NewItemActivity
         Intent intent = new Intent(MainActivity.this, NewItemActivity
                 .class);
-        intent.putExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, isObject);
         startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
 
     }
@@ -261,11 +259,6 @@ public class MainActivity extends AppCompatActivity
                     this,
                     R.string.not_saved_toast,
                     Toast.LENGTH_LONG).show();
-        }
-
-        // Closes the FAB submenu
-        if(fabExpanded) {
-            closeSubMenusFab();
         }
     }
 }

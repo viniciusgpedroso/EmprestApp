@@ -29,7 +29,7 @@ public class Item {
     private UUID mId;
     @NonNull
     @ColumnInfo(name = "amount")
-    private Float mAmount; // TODO float to BigDecimal
+    private Float mAmount; // TODO Convert this float to Currency using system location
     @ColumnInfo(name = "contact")
     private String mContact;
     @NonNull
@@ -45,13 +45,12 @@ public class Item {
     private boolean mIsToReceive;
     @ColumnInfo(name = "isObject")
     private boolean mIsObject;
-    @NonNull
     @ColumnInfo(name = "objectDescription")
     private String objectDescription;
 
     public Item(@NonNull UUID id, @NonNull Float amount, String contact,
                 @NonNull Date borrowDate, @NonNull Date dueDate,
-                boolean isToReceive, boolean isObject, @NonNull String
+                boolean isToReceive, boolean isObject, String
                         objectDescription, int status) {
         this.mId = id;
         this.mAmount = amount;

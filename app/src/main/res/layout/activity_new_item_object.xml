@@ -88,7 +88,7 @@
             android:id="@+id/already_paid_cb_object"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already returned?"
+            android:text="Already paid?"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintLeft_toRightOf="@+id/object_et"
