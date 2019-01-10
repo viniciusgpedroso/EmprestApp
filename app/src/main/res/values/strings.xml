@@ -29,4 +29,5 @@
     <string name="initial_overview_object_to_receive">0 items</string>
     <string name="add_object_fab">Add object</string>
     <string name="add_money_fab">Add money</string>
+    <string name="is_overdue">OVERDUE!</string>
 </resources>

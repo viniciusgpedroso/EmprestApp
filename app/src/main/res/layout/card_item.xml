@@ -46,7 +46,8 @@
                     android:textColor="@color/colorSecondary"
                     android:textStyle="bold"
                     android:textSize="@dimen/item_text_size"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible"
+                    android:maxLength="30"/>
 
                 <ImageView
                     android:id="@+id/item_status_img"
@@ -70,12 +71,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/item_placeholder_contact" />
+                    android:text="@string/item_placeholder_contact"
+                    android:maxLength="25"/>
 
                 <TextView
+                    android:id="@+id/item_is_overdue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/is_overdue"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/item_due_date_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toStartOf="@+id/item_due_date"
+                    android:layout_below="@id/item_is_overdue"
                     android:text="@string/due_date"/>
 
                 <TextView
@@ -84,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_alignParentEnd="true"
+                    android:layout_below="@id/item_is_overdue"
                     android:text="@string/item_placeholder_date" />
             </RelativeLayout>
 
