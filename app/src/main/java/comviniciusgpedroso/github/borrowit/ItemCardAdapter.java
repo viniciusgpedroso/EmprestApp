@@ -44,9 +44,21 @@ public class ItemCardAdapter extends
         if(currentItem.isToReceive()) {
             holder.mValue.setTextColor(pr.getResources().getColor(R.color
                     .colorPrimary));
+            holder.mObjectDescription.setTextColor(pr.getResources().getColor(R.color
+                    .colorPrimary));
         }
-        String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
-        holder.mValue.setText(valueWithCurrencySymbol);
+        if(currentItem.isObject()) {
+            String objectDescrWithSymbol = "*" + currentItem
+                    .getObjectDescription();
+            holder.mObjectDescription.setText(objectDescrWithSymbol);
+            holder.mValue.setVisibility(View.INVISIBLE);
+            holder.mObjectDescription.setVisibility(View.VISIBLE);
+        } else {
+            String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
+            holder.mValue.setText(valueWithCurrencySymbol);
+            holder.mObjectDescription.setVisibility(View.INVISIBLE);
+            holder.mValue.setVisibility(View.VISIBLE);
+        }
         holder.mContact.setText(currentItem.getContact());
         holder.mDueDate.setText(currentItem.getSimpleDueDate());
         holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus());
@@ -73,6 +85,7 @@ public class ItemCardAdapter extends
     class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageStatus;
         public TextView mValue;
+        public TextView mObjectDescription;
         public TextView mContact;
         public TextView mDueDate;
 
@@ -82,6 +95,8 @@ public class ItemCardAdapter extends
             mImageStatus = itemView.findViewById(R.id.item_status_img);
             mContact = itemView.findViewById(R.id.item_contact_name);
             mDueDate = itemView.findViewById(R.id.item_due_date);
+            mObjectDescription = itemView.findViewById(R.id
+                    .item_object_description);
 
             // Set the OnClickListener to the entire view.
             itemView.setOnClickListener(this);

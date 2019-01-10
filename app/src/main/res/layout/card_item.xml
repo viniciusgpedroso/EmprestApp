@@ -37,6 +37,17 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/item_text_size" />
 
+                <TextView
+                    android:id="@+id/item_object_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/item_placeholder_object_description"
+                    android:textColor="@color/colorSecondary"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/item_text_size"
+                    android:visibility="invisible"/>
+
                 <ImageView
                     android:id="@+id/item_status_img"
                     android:layout_width="wrap_content"
