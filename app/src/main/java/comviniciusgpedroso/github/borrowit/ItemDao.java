@@ -52,4 +52,13 @@ public interface ItemDao {
             "WHERE isToReceive = 0 AND isObject = 0 AND status != 2")
     LiveData<Float> getPaySum();
 
+    @Query("SELECT SUM(isObject) " +
+            "FROM item_table " +
+            "WHERE isToReceive = 1 AND isObject = 1 AND status !=2")
+    LiveData<Integer> getReceiveObjectsSum();
+
+    @Query("SELECT SUM(isObject) " +
+            "FROM item_table " +
+            "WHERE isToReceive = 0 AND isObject = 1 AND status !=2")
+    LiveData<Integer> getReturnObjectsSum();
 }

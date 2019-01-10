@@ -17,6 +17,8 @@ public class ItemViewModel extends AndroidViewModel {
     private LiveData<List<Item>> mAllReceiveItems;
     private LiveData<Float> paySum;
     private LiveData<Float> receiveSum;
+    private LiveData<Integer> objectReceiveSum;
+    private LiveData<Integer> objectReturnSum;
 
     public ItemViewModel (Application application) {
         super(application);
@@ -26,13 +28,15 @@ public class ItemViewModel extends AndroidViewModel {
         mAllReceiveItems = mRepository.getAllReceiveItems();
         paySum = mRepository.getPaySum();
         receiveSum = mRepository.getReceiveSum();
+        objectReceiveSum = mRepository.getObjectReceiveSum();
+        objectReturnSum = mRepository.getObjectReturnSum();
     }
     
     public LiveData<List<Item>> getAllItems() {
         return mAllItems;
     }
 
-        LiveData<List<Item>> getAllPayItems() {
+    LiveData<List<Item>> getAllPayItems() {
         return mAllPayItems;
     }
 
@@ -46,6 +50,14 @@ public class ItemViewModel extends AndroidViewModel {
 
     public LiveData<Float> getReceiveSum() {
         return receiveSum;
+    }
+
+    public LiveData<Integer> getObjectReceiveSum() {
+        return objectReceiveSum;
+    }
+
+    public LiveData<Integer> getObjectReturnSum() {
+        return objectReturnSum;
     }
 
     public void insert(Item item) {

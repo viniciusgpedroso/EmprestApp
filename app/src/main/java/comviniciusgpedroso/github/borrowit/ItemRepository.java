@@ -18,6 +18,8 @@ public class ItemRepository {
     private LiveData<List<Item>> mAllReceiveItems;
     private LiveData<Float> paySum;
     private LiveData<Float> receiveSum;
+    private LiveData<Integer> objectReceiveSum;
+    private LiveData<Integer> objectReturnSum;
 
     // TODO Check if AllItems is used anywhere
     ItemRepository(Application application) {
@@ -28,6 +30,8 @@ public class ItemRepository {
         mAllReceiveItems = mItemDao.getAllReceiveItems();
         paySum = mItemDao.getPaySum();
         receiveSum = mItemDao.getReceiveSum();
+        objectReceiveSum = mItemDao.getReceiveObjectsSum();
+        objectReturnSum = mItemDao.getReturnObjectsSum();
     }
 
     LiveData<List<Item>> getAllItems() {
@@ -48,6 +52,14 @@ public class ItemRepository {
 
     LiveData<Float> getReceiveSum() {
         return receiveSum;
+    }
+
+    public LiveData<Integer> getObjectReceiveSum() {
+        return objectReceiveSum;
+    }
+
+    public LiveData<Integer> getObjectReturnSum() {
+        return objectReturnSum;
     }
 
     public void insert (Item item) {
