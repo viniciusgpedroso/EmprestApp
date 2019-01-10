@@ -21,6 +21,8 @@ public class NewItemActivity extends AppCompatActivity {
             "comviniciusgpedroso.github.borrowit.TORECEIVEREPLY";
     public static final String VALUE_REPLY =
             "comviniciusgpedroso.github.borrowit.VALUEREPLY";
+    public static final String OBJECT_DESCRIPTION_REPLY =
+            "comviniciusgpedroso.github.borrowit.OBJECTDESCRIPTIONREPLY";
     public static final String PAID_REPLY =
             "comviniciusgpedroso.github.borrowit.PAIDREPLY";
     public static final String CONTACT_REPLY =
@@ -32,6 +34,7 @@ public class NewItemActivity extends AppCompatActivity {
 
     private RadioGroup radioGroup;
     private EditText valueEditView;
+    private EditText objectEditView;
     private EditText contactEditView;
     private CheckBox alreadyPaidCheckBox;
     // Date Default values are now
@@ -49,6 +52,7 @@ public class NewItemActivity extends AppCompatActivity {
 
         if(intent.getBooleanExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, false)) {
             setContentView(R.layout.activity_new_item_object);
+            createsNewObjectItem();
         } else {
             setContentView(R.layout.activity_new_item_money);
             createsNewMoneyItem();
@@ -85,6 +89,38 @@ public class NewItemActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void createsNewObjectItem() {
+        radioGroup = findViewById(R.id.pay_radio_group_object);
+        objectEditView = findViewById(R.id.object_et);
+        contactEditView = findViewById(R.id.contact_et_object);
+        alreadyPaidCheckBox = findViewById(R.id.already_paid_cb_object);
+
+        final Button button = findViewById(R.id.button_save_object);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent replyIntent = new Intent();
+                String objectDescr = objectEditView.getText().toString();
+                String contact = contactEditView.getText().toString();
+                toReceive = radioGroup.getCheckedRadioButtonId() == R.id.to_receive_rb_object;
+                alreadyPaid = alreadyPaidCheckBox.isChecked();
+                if (TextUtils.isEmpty(objectEditView.getText())) {
+                    setResult(RESULT_CANCELED, replyIntent);
+                } else {
+                    replyIntent.putExtra(OBJECT_DESCRIPTION_REPLY, objectDescr);
+                    replyIntent.putExtra(TORECEIVE_REPLY, toReceive);
+                    replyIntent.putExtra(PAID_REPLY, alreadyPaid);
+                    replyIntent.putExtra(CONTACT_REPLY, contact);
+                    replyIntent.putExtra(BORROW_DATE_REPLY, borrowDate.getTime());
+                    replyIntent.putExtra(DUE_DATE_REPLY, dueDate.getTime());
+                    setResult(RESULT_OK, replyIntent);
+                }
+                finish();
+            }
+        });
+
     }
 
     /**
