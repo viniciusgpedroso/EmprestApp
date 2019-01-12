@@ -50,16 +50,16 @@ public class OverviewTabFragment extends Fragment {
         mItemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
 
         // Updates the cards if the values are changed
-        mItemViewModel.getPaySum().observe(this, new Observer<Float>() {
+        mItemViewModel.getPaySum().observe(this, new Observer<Long>() {
             @Override
-            public void onChanged(@Nullable Float aFloat) {
+            public void onChanged(@Nullable Long aLong) {
                 updateAmountCards();
             }
         });
 
-        mItemViewModel.getReceiveSum().observe(this, new Observer<Float>() {
+        mItemViewModel.getReceiveSum().observe(this, new Observer<Long>() {
             @Override
-            public void onChanged(@Nullable Float aFloat) {
+            public void onChanged(@Nullable Long aLong) {
                 updateAmountCards();
             }
         });
@@ -87,8 +87,8 @@ public class OverviewTabFragment extends Fragment {
 
     public void updateAmountCards() {
         // TODO Needs to fix currency
-        Float payValue = mItemViewModel.getPaySum().getValue();
-        Float receiveValue = mItemViewModel.getReceiveSum().getValue();
+        Long payValue = mItemViewModel.getPaySum().getValue();
+        Long receiveValue = mItemViewModel.getReceiveSum().getValue();
         DecimalFormat df = new DecimalFormat("#.##");
         df.setMinimumFractionDigits(2);
         df.setMaximumFractionDigits(2);
