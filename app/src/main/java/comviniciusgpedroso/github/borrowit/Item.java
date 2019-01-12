@@ -29,7 +29,7 @@ public class Item {
     private UUID mId;
     @NonNull
     @ColumnInfo(name = "amount")
-    private Float mAmount; // TODO Convert this float to Currency using system location
+    private Long mAmount; // TODO Convert this float to Currency using system location
     @ColumnInfo(name = "contact")
     private String mContact;
     @NonNull
@@ -48,7 +48,7 @@ public class Item {
     @ColumnInfo(name = "objectDescription")
     private String objectDescription;
 
-    public Item(@NonNull UUID id, @NonNull Float amount, String contact,
+    public Item(@NonNull UUID id, @NonNull Long amount, String contact,
                 @NonNull Date borrowDate, @NonNull Date dueDate,
                 boolean isToReceive, boolean isObject, String
                         objectDescription, int status) {
@@ -96,7 +96,7 @@ public class Item {
         return mId;
     }
 
-    public Float getAmount() {
+    public Long getAmount() {
         return mAmount;
     }
 
@@ -162,7 +162,7 @@ public class Item {
         mId = id;
     }
 
-    public void setAmount(@NonNull Float amount) {
+    public void setAmount(@NonNull Long amount) {
         mAmount = amount;
     }
 
