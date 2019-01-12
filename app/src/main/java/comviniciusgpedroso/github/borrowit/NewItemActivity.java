@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTIPLIER;
 import static comviniciusgpedroso.github.borrowit.MainActivity.NEW_ITEM_ACTIVITY_IS_OBJECT;
 
 public class NewItemActivity extends AppCompatActivity {
@@ -33,6 +34,8 @@ public class NewItemActivity extends AppCompatActivity {
             "comviniciusgpedroso.github.borrowit.BORROWDATEREPLY";
     public static final String DUE_DATE_REPLY =
             "comviniciusgpedroso.github.borrowit.DUEDATEREPLY";
+
+
 
     private RadioGroup radioGroup;
     private EditText valueEditView;
@@ -76,7 +79,8 @@ public class NewItemActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
-                Float value = Float.valueOf(valueEditView.getText().toString());
+                double valueDouble = Double.valueOf(valueEditView.getText().toString());
+                long value = (long) (CURRENCY_2_DECIMALS_MULTIPLIER * valueDouble);
                 String contact = contactEditView.getText().toString();
                 toReceive = radioGroup.getCheckedRadioButtonId() == R.id.to_receive_rb;
                 alreadyPaid = alreadyPaidCheckBox.isChecked();

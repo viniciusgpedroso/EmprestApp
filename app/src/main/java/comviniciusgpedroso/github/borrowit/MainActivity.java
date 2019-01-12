@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity
 
         if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             // Gets data back from the NewItemActivity Intent
-            float valueAmount = data.getFloatExtra(NewItemActivity
+            Long valueAmount = data.getLongExtra(NewItemActivity
                     .VALUE_REPLY, 0);
             boolean toReceive = data.getBooleanExtra(NewItemActivity
                     .TORECEIVE_REPLY, true);

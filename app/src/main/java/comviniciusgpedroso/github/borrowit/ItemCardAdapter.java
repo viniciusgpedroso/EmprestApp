@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTIPLIER;
 
 /**
  * Created by endsieg on 31/12/18.
@@ -60,7 +63,12 @@ public class ItemCardAdapter extends
             holder.mValue.setVisibility(View.INVISIBLE);
             holder.mObjectDescription.setVisibility(View.VISIBLE);
         } else {
-            String valueWithCurrencySymbol = "$" + currentItem.getValue(); // TODO Add currency here too
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setMinimumFractionDigits(2);
+            df.setMaximumFractionDigits(2);
+
+            String valueWithCurrencySymbol = "$" + df.format(currentItem.getAmount() /
+                    CURRENCY_2_DECIMALS_MULTIPLIER);
             holder.mValue.setText(valueWithCurrencySymbol);
             holder.mObjectDescription.setVisibility(View.INVISIBLE);
             holder.mValue.setVisibility(View.VISIBLE);

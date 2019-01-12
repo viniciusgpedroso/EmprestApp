@@ -93,8 +93,9 @@ public class OverviewTabFragment extends Fragment {
         df.setMinimumFractionDigits(2);
         df.setMaximumFractionDigits(2);
 
-        String payString = payValue == null ? "$0.00" : "$" + df.format(payValue);
-        String receiveString = receiveValue == null ? "$0.00" : "$" + df.format(receiveValue);
+        String payString = payValue == null ? "$0.00" : "$" + df.format(payValue/100.0);
+        String receiveString = receiveValue == null ? "$0.00" : "$" + df.format
+                (receiveValue/100.0);
 
         receiveTextView.setText(receiveString);
         payTextView.setText(payString);

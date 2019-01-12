@@ -21,6 +21,10 @@ public class Item {
     public static final int OVERDUE = 0;
     public static final int DUE = 1;
     public static final int DONE = 2;
+    // Currency Cents converters
+    public static final double CURRENCY_0_DECIMALS_MULTIPLIER = 1;
+    public static final double CURRENCY_2_DECIMALS_MULTIPLIER = 100.0;
+    public static final double CURRENCY_3_DECIMALS_MULTIPLIER = 1000.0;
 
 
     @PrimaryKey
