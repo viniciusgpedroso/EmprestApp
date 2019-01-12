@@ -15,8 +15,8 @@ public class ItemViewModel extends AndroidViewModel {
     private LiveData<List<Item>> mAllItems;
     private LiveData<List<Item>> mAllPayItems;
     private LiveData<List<Item>> mAllReceiveItems;
-    private LiveData<Float> paySum;
-    private LiveData<Float> receiveSum;
+    private LiveData<Long> paySum;
+    private LiveData<Long> receiveSum;
     private LiveData<Integer> objectReceiveSum;
     private LiveData<Integer> objectReturnSum;
 
@@ -44,11 +44,11 @@ public class ItemViewModel extends AndroidViewModel {
         return mAllReceiveItems;
     }
 
-    public LiveData<Float> getPaySum() {
+    public LiveData<Long> getPaySum() {
         return paySum;
     }
 
-    public LiveData<Float> getReceiveSum() {
+    public LiveData<Long> getReceiveSum() {
         return receiveSum;
     }
 
