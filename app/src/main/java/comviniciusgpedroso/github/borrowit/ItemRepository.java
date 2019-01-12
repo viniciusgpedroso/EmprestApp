@@ -16,8 +16,8 @@ public class ItemRepository {
     private LiveData<List<Item>> mAllItems;
     private LiveData<List<Item>> mAllPayItems;
     private LiveData<List<Item>> mAllReceiveItems;
-    private LiveData<Float> paySum;
-    private LiveData<Float> receiveSum;
+    private LiveData<Long> paySum;
+    private LiveData<Long> receiveSum;
     private LiveData<Integer> objectReceiveSum;
     private LiveData<Integer> objectReturnSum;
 
@@ -46,11 +46,11 @@ public class ItemRepository {
         return mAllReceiveItems;
     }
 
-    LiveData<Float> getPaySum() {
+    LiveData<Long> getPaySum() {
         return paySum;
     }
 
-    LiveData<Float> getReceiveSum() {
+    LiveData<Long> getReceiveSum() {
         return receiveSum;
     }
 
