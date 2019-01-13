@@ -1,5 +1,6 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +47,7 @@ public class NewItemActivity extends AppCompatActivity {
     private boolean borrowDatePickerWasChosen = true;
     private Date borrowDate = new Date();
     private Date dueDate = new Date();
-
+    private FloatingActionButton fabNewMoney;
     private boolean toReceive;
     private boolean alreadyPaid;
     private boolean isObject;
@@ -63,6 +64,7 @@ public class NewItemActivity extends AppCompatActivity {
         } else {
             setContentView(R.layout.activity_new_item_money);
             isObject = false;
+            fabNewMoney = this.findViewById(R.id.fab_new_money);
             createsNewMoneyItem();
         }
 
@@ -75,8 +77,7 @@ public class NewItemActivity extends AppCompatActivity {
         contactEditView = (EditText) findViewById(R.id.contact_et);
         alreadyPaidCheckBox = (CheckBox) findViewById(R.id.already_paid_cb);
 
-        final Button button = findViewById(R.id.button_save);
-        button.setOnClickListener(new View.OnClickListener() {
+        fabNewMoney.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
                 double valueDouble = Double.valueOf(valueEditView.getText().toString());

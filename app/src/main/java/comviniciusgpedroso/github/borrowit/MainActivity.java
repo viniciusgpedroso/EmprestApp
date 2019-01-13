@@ -262,5 +262,9 @@ public class MainActivity extends AppCompatActivity
                     R.string.not_saved_toast,
                     Toast.LENGTH_LONG).show();
         }
+
+        if(fabExpanded) {
+            closeSubMenusFab();
+        }
     }
 }
