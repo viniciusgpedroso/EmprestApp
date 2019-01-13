@@ -14,4 +14,5 @@ public class PayDetailActivity extends AppCompatActivity {
     }
 
     // TODO Add multiple action fab with edit, mark as done and delete
+    // TODO arch progress bar with object descripto limit 20 chars
 }
