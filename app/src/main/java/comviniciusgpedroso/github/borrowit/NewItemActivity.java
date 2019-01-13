@@ -48,6 +48,7 @@ public class NewItemActivity extends AppCompatActivity {
     private Date borrowDate = new Date();
     private Date dueDate = new Date();
     private FloatingActionButton fabNewMoney;
+    private FloatingActionButton fabNewObject;
     private boolean toReceive;
     private boolean alreadyPaid;
     private boolean isObject;
@@ -60,6 +61,7 @@ public class NewItemActivity extends AppCompatActivity {
         if(intent.getBooleanExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, false)) {
             setContentView(R.layout.activity_new_item_object);
             isObject = true;
+            fabNewObject = this.findViewById(R.id.fab_new_object);
             createsNewObjectItem();
         } else {
             setContentView(R.layout.activity_new_item_money);
@@ -109,8 +111,7 @@ public class NewItemActivity extends AppCompatActivity {
         contactEditView = findViewById(R.id.contact_et_object);
         alreadyPaidCheckBox = findViewById(R.id.already_paid_cb_object);
 
-        final Button button = findViewById(R.id.button_save_object);
-        button.setOnClickListener(new View.OnClickListener() {
+        fabNewObject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent replyIntent = new Intent();

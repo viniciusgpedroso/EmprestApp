@@ -1,197 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="comviniciusgpedroso.github.borrowit.MainActivity">
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="comviniciusgpedroso.github.borrowit.NewItemActivity">
+        android:layout_height="match_parent">
 
-        <!-- TODO implement toogle button for objects and disable @+id/amount_et PAY -> TO RETURN -->
-
-        <TextView
-            android:id="@+id/question_pay_receive_object"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="Receive or Return?"/>
+            tools:context="comviniciusgpedroso.github.borrowit.NewItemActivity">
 
-        <View
-            android:id="@+id/radio_horizontal_line_object"
-            android:layout_width="fill_parent"
-            android:layout_height="2dip"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#bdbdbd"
-            app:layout_constraintTop_toBottomOf="@id/question_pay_receive_object"/>
+            <!-- TODO implement toogle button for objects and disable @+id/amount_et PAY -> TO RETURN -->
 
-        <RadioGroup
-            android:id="@+id/pay_radio_group_object"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/radio_horizontal_line_object">
+            <TextView
+                android:id="@+id/question_pay_receive_object"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="Receive or Return?" />
 
-            <RadioButton
-                android:id="@+id/to_receive_rb_object"
+            <View
+                android:id="@+id/radio_horizontal_line_object"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#bdbdbd"
+                app:layout_constraintTop_toBottomOf="@id/question_pay_receive_object" />
+
+            <RadioGroup
+                android:id="@+id/pay_radio_group_object"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="To Receive" />
+                android:orientation="horizontal"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/radio_horizontal_line_object">
 
-            <RadioButton
-                android:id="@+id/to_pay_rb_object"
+                <RadioButton
+                    android:id="@+id/to_receive_rb_object"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="To Receive" />
+
+                <RadioButton
+                    android:id="@+id/to_pay_rb_object"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To Return" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/value_tv_object"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="Object"
+                app:layout_constraintTop_toBottomOf="@id/pay_radio_group_object" />
+
+            <View
+                android:id="@+id/value_line_object"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#bdbdbd"
+                app:layout_constraintTop_toBottomOf="@id/value_tv_object" />
+
+            <EditText
+                android:id="@+id/object_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Return" />
-        </RadioGroup>
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="Borrowed object description"
+                android:inputType="textCapWords"
+                android:maxLength="50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/value_line_object" />
 
-        <TextView
-            android:id="@+id/value_tv_object"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingTop="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="Object"
-            app:layout_constraintTop_toBottomOf="@id/pay_radio_group_object"/>
+            <CheckBox
+                android:id="@+id/already_paid_cb_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Already Returned?"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/object_et" />
 
-        <View
-            android:id="@+id/value_line_object"
-            android:layout_width="fill_parent"
-            android:layout_height="2dip"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#bdbdbd"
-            app:layout_constraintTop_toBottomOf="@id/value_tv_object"/>
+            <TextView
+                android:id="@+id/contact_tv_object"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="Contact"
+                app:layout_constraintTop_toBottomOf="@id/already_paid_cb_object" />
 
-        <EditText
-            android:id="@+id/object_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Borrowed object description"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:inputType="textCapWords"
-            android:maxLength="50"
-            app:layout_constraintTop_toBottomOf="@id/value_line_object"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <View
+                android:id="@+id/contact_line_object"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#bdbdbd"
+                app:layout_constraintTop_toBottomOf="@id/contact_tv_object" />
 
-        <CheckBox
-            android:id="@+id/already_paid_cb_object"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already Returned?"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintTop_toBottomOf="@id/object_et"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <!--TODO Make Contact picker-->
+            <EditText
+                android:id="@+id/contact_et_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="Contact name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contact_tv_object" />
 
-        <TextView
-            android:id="@+id/contact_tv_object"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingTop="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="Contact"
-            app:layout_constraintTop_toBottomOf="@id/already_paid_cb_object"/>
+            <TextView
+                android:id="@+id/dates_tv_object"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:text="Dates"
+                app:layout_constraintTop_toBottomOf="@id/contact_et_object" />
 
-        <View
-            android:id="@+id/contact_line_object"
-            android:layout_width="fill_parent"
-            android:layout_height="2dip"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#bdbdbd"
-            app:layout_constraintTop_toBottomOf="@id/contact_tv_object"/>
+            <View
+                android:id="@+id/dates_line_object"
+                android:layout_width="fill_parent"
+                android:layout_height="2dip"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#bdbdbd"
+                app:layout_constraintTop_toBottomOf="@id/dates_tv_object" />
 
-        <!--TODO Make Contact picker-->
-        <EditText
-            android:id="@+id/contact_et_object"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Contact name"
-            android:inputType="textPersonName"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/contact_tv_object"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <Button
+                android:id="@+id/borrow_date_btn_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="showBorrowDatePicker"
+                android:text="Set borrow date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dates_line_object" />
 
-        <TextView
-            android:id="@+id/dates_tv_object"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingTop="16dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="Dates"
-            app:layout_constraintTop_toBottomOf="@id/contact_et_object"/>
+            <Button
+                android:id="@+id/due_date_btn_object"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:onClick="showDueDatePicker"
+                android:text="Set due date"
+                app:layout_constraintStart_toEndOf="@id/borrow_date_btn_object"
+                app:layout_constraintTop_toBottomOf="@+id/dates_line_object" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
-        <View
-            android:id="@+id/dates_line_object"
-            android:layout_width="fill_parent"
-            android:layout_height="2dip"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="#bdbdbd"
-            app:layout_constraintTop_toBottomOf="@id/dates_tv_object"/>
-
-        <Button
-            android:id="@+id/borrow_date_btn_object"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set borrow date"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:onClick="showBorrowDatePicker"
-            app:layout_constraintTop_toBottomOf="@+id/dates_line_object"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <Button
-            android:id="@+id/due_date_btn_object"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set due date"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:onClick="showDueDatePicker"
-            app:layout_constraintTop_toBottomOf="@+id/dates_line_object"
-            app:layout_constraintStart_toEndOf="@id/borrow_date_btn_object"/>
-
-        <!--TODO Change this button to a fab button with a check mark-->
-        <Button
-            android:id="@+id/button_save_object"
-            android:text="DONE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/borrow_date_btn_object"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_new_object"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_check_white_24dp"
-        app:fabSize="mini"/>
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_check_white_24dp" />
 </android.support.design.widget.CoordinatorLayout>
