@@ -3,6 +3,7 @@ package comviniciusgpedroso.github.borrowit;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatDrawableManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -22,11 +23,13 @@ public class ItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         // Menu of action buttons
-        fab = findViewById(R.id.fab_activity_detail);
+        fab = findViewById(R.id.fab_detail);
         fabEdit = findViewById(R.id.fabEdit);
         fabMarkAsDone = findViewById(R.id.fabMarkAsDone);
         layoutFabMarkAsDone = findViewById(R.id.layoutFabMarkAsDone);
         layoutFabEdit = findViewById(R.id.layoutFabEdit);
+
+        fab.setImageResource(R.drawable.ic_edit_white_24dp);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,8 @@ public class ItemDetailActivity extends AppCompatActivity {
                 markThisItemAsDone();
             }
         });
+
+        closeSubMenusFab();
     }
 
     // TODO Add multiple action fab with edit, mark as done and delete

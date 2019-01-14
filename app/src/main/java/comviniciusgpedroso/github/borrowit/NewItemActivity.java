@@ -92,14 +92,14 @@ public class NewItemActivity extends AppCompatActivity {
         fabNewMoney.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
-                double valueDouble = Double.valueOf(valueEditView.getText().toString());
-                long value = (long) (CURRENCY_2_DECIMALS_MULTIPLIER * valueDouble);
                 String contact = contactEditView.getText().toString();
                 toReceive = radioGroup.getCheckedRadioButtonId() == R.id.to_receive_rb;
                 alreadyPaid = alreadyPaidCheckBox.isChecked();
                 if (TextUtils.isEmpty(valueEditView.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
+                    double valueDouble = Double.valueOf(valueEditView.getText().toString());
+                    long value = (long) (CURRENCY_2_DECIMALS_MULTIPLIER * valueDouble);
                     replyIntent.putExtra(VALUE_REPLY, value);
                     replyIntent.putExtra(OBJECT_DESCRIPTION_REPLY, "NOT AN OBJECT");
                     replyIntent.putExtra(ISOBJECT_REPLY, isObject);
