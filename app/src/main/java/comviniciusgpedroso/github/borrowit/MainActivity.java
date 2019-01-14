@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity
     FloatingActionButton fabAdd;
     FloatingActionButton fabAddMoney;
     FloatingActionButton fabAddObject;
-    private LinearLayout layoutFabAdd;
     private LinearLayout layoutFabAddMoney;
     private LinearLayout layoutFabAddObject;
 

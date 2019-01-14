@@ -1,18 +1,84 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 //TODO FIX NAME
 //TODO Add arch progress bar, borrow and due dated in the extremities and amount in the middle
 public class ItemDetailActivity extends AppCompatActivity {
 
+    private LinearLayout layoutFabEdit;
+    private LinearLayout layoutFabMarkAsDone;
+    private FloatingActionButton fab;
+    private FloatingActionButton fabEdit;
+    private FloatingActionButton fabMarkAsDone;
+    private boolean fabExpanded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        // Menu of action buttons
+        fab = findViewById(R.id.fab_activity_detail);
+        fabEdit = findViewById(R.id.fabEdit);
+        fabMarkAsDone = findViewById(R.id.fabMarkAsDone);
+        layoutFabMarkAsDone = findViewById(R.id.layoutFabMarkAsDone);
+        layoutFabEdit = findViewById(R.id.layoutFabEdit);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (fabExpanded) {
+                    closeSubMenusFab();
+                } else {
+                    openSubMenusFab();
+                }
+            }
+        });
+
+        fabEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editThisItem();
+            }
+        });
+
+        fabMarkAsDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                markThisItemAsDone();
+            }
+        });
     }
 
     // TODO Add multiple action fab with edit, mark as done and delete
     // TODO arch progress bar with object descripto limit 20 chars
+
+    /**
+     * Collapses Object and Money submenus from the addFab
+     */
+    private void closeSubMenusFab() {
+        layoutFabMarkAsDone.setVisibility(View.INVISIBLE);
+        layoutFabEdit.setVisibility(View.INVISIBLE);
+        fab.setImageResource(R.drawable.ic_add_white_24dp);
+        fabExpanded = false;
+    }
+
+    private void openSubMenusFab() {
+        layoutFabMarkAsDone.setVisibility(View.VISIBLE);
+        layoutFabEdit.setVisibility(View.VISIBLE);
+        fab.setImageResource(R.drawable.ic_close_white_24dp);
+        fabExpanded = true;
+    }
+
+    private void markThisItemAsDone() {
+
+    }
+
+    private void editThisItem() {
+
+    }
 }
