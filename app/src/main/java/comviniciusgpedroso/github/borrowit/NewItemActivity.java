@@ -11,9 +11,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTIPLIER;
 import static comviniciusgpedroso.github.borrowit.MainActivity.NEW_ITEM_ACTIVITY_IS_OBJECT;
@@ -47,6 +50,8 @@ public class NewItemActivity extends AppCompatActivity {
     private boolean borrowDatePickerWasChosen = true;
     private Date borrowDate = new Date();
     private Date dueDate = new Date();
+    private TextView borrowDateTextView;
+    private TextView dueDateTextView;
     private FloatingActionButton fabNewMoney;
     private FloatingActionButton fabNewObject;
     private boolean toReceive;
@@ -74,10 +79,16 @@ public class NewItemActivity extends AppCompatActivity {
     }
 
     private void createsNewMoneyItem() {
-        radioGroup = (RadioGroup) findViewById(R.id.pay_radio_group);
-        valueEditView = (EditText) findViewById(R.id.amount_et);
-        contactEditView = (EditText) findViewById(R.id.contact_et);
-        alreadyPaidCheckBox = (CheckBox) findViewById(R.id.already_paid_cb);
+        radioGroup = findViewById(R.id.pay_radio_group);
+        valueEditView = findViewById(R.id.amount_et);
+        contactEditView = findViewById(R.id.contact_et);
+        alreadyPaidCheckBox = findViewById(R.id.already_paid_cb);
+        // Date Text views
+        borrowDateTextView = findViewById(R.id.borrow_date_tv);
+        dueDateTextView = findViewById(R.id.due_date_tv);
+        borrowDateTextView.setText(createsSimpleDueDate(new Date()));
+        dueDateTextView.setText(createsSimpleDueDate(new Date()));
+
 
         fabNewMoney.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -161,38 +172,30 @@ public class NewItemActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "Date Picker");
     }
 
+    public String createsSimpleDueDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        String month = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT,
+                Locale.getDefault());
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        return day + " " + month + " " + year;
+    };
 
     /**
      * Process the date picker result into strings that can be displayed in
-     * a Toast.
-     *
-     * @param year Chosen year
-     * @param month Chosen month
-     * @param day Chosen day
-     */
-    public void processDatePicker(int year, int month, int day) {
-        String month_string = Integer.toString(month + 1);
-        String day_string = Integer.toString(day);
-        String year_string = Integer.toString(year);
-        String dateMessage = (day_string +
-                "/" + month_string +
-                "/" + year_string);
-
-        Toast.makeText(this, dateMessage,
-                Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * Process the date picker result into strings that can be displayed in
-     * a Toast.
+     * in the text views.
      * @param chosenDate date chosen by the user trough the DatePickerFragment
      *                   class
      */
     public void processDatePickerResult(Date chosenDate) {
         if (borrowDatePickerWasChosen) {
             borrowDate = chosenDate;
+            borrowDateTextView.setText(createsSimpleDueDate(chosenDate));
         } else {
             dueDate = chosenDate;
+            dueDateTextView.setText(createsSimpleDueDate(chosenDate));
         }
     }
 }
