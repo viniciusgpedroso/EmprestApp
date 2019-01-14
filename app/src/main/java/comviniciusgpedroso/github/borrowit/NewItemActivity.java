@@ -75,7 +75,8 @@ public class NewItemActivity extends AppCompatActivity {
             fabNewMoney = this.findViewById(R.id.fab_new_money);
             createsNewMoneyItem();
         }
-        
+        //Prevents keyboard from showing up in the activity start
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void createsNewMoneyItem() {
