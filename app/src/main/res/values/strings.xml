@@ -30,4 +30,6 @@
     <string name="add_object_fab">Add object</string>
     <string name="add_money_fab">Add money</string>
     <string name="is_overdue">OVERDUE!</string>
+    <string name="mark_as_done">Mark as Done</string>
+    <string name="fab_edit">Edit Details</string>
 </resources>

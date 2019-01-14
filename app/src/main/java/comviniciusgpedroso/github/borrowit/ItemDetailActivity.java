@@ -10,7 +10,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_detail);
+        setContentView(R.layout.activity_detail);
     }
 
     // TODO Add multiple action fab with edit, mark as done and delete
