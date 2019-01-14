@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 //TODO FIX NAME
 //TODO Add arch progress bar, borrow and due dated in the extremities and amount in the middle
-public class PayDetailActivity extends AppCompatActivity {
+public class ItemDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

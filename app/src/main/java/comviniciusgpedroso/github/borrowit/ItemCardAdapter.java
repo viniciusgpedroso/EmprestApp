@@ -134,7 +134,7 @@ public class ItemCardAdapter extends
         public void onClick(View view) {
             Item currentItem = mItemArrayList.get(getAdapterPosition());
             Intent detailIntent;
-            detailIntent = new Intent(pr.getContext(), PayDetailActivity.class);
+            detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
 
             detailIntent.putExtra("amount", currentItem.getAmount());
             detailIntent.putExtra("contact", currentItem.getContact());
