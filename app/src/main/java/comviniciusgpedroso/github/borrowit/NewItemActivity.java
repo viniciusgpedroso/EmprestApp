@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -74,8 +75,7 @@ public class NewItemActivity extends AppCompatActivity {
             fabNewMoney = this.findViewById(R.id.fab_new_money);
             createsNewMoneyItem();
         }
-
-
+        
     }
 
     private void createsNewMoneyItem() {

@@ -64,7 +64,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_object"
-                app:fabSize="mini"
                 />
         </LinearLayout>
 
@@ -105,7 +104,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_money"
-                app:fabSize="mini"
                 />
         </LinearLayout>
 
@@ -115,8 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/ic_add_tip"
-            app:fabSize="mini"/>
+            app:srcCompat="@drawable/ic_add_tip" />
     </FrameLayout>
 
 
