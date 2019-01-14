@@ -121,6 +121,11 @@ public class NewItemActivity extends AppCompatActivity {
         objectEditView = findViewById(R.id.object_et);
         contactEditView = findViewById(R.id.contact_et_object);
         alreadyPaidCheckBox = findViewById(R.id.already_paid_cb_object);
+        // Date Text views
+        borrowDateTextView = findViewById(R.id.borrow_date_tv_object);
+        dueDateTextView = findViewById(R.id.due_date_tv_object);
+        borrowDateTextView.setText(createsSimpleDueDate(new Date()));
+        dueDateTextView.setText(createsSimpleDueDate(new Date()));
 
         fabNewObject.setOnClickListener(new View.OnClickListener() {
             @Override

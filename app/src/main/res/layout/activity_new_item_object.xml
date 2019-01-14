@@ -164,7 +164,6 @@
                     android:id="@+id/borrow_date_tv_object"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1/1/2019"
                     android:padding="4dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -196,7 +195,6 @@
                     android:id="@+id/due_date_tv_object"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1/1/2019"
                     android:padding="4dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp" />
@@ -206,7 +204,7 @@
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Change borrow date"
+                    android:text="Change due date"
                     android:textSize="12sp"
                     android:textAllCaps="false"
                     android:layout_marginStart="16dp"
