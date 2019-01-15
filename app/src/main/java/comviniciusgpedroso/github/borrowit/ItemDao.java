@@ -15,7 +15,7 @@ import java.util.List;
 
 @Dao
 public interface ItemDao {
-
+    //TODO Add isArchived boolean and change queries to not include archived
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Item item);
 
