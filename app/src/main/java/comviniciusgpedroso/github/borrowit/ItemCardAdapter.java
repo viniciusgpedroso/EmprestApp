@@ -85,7 +85,7 @@ public class ItemCardAdapter extends
                                         Typeface.BOLD);
 
             // TODO Add option to remove animation in the settings
-            Animation anim = new AlphaAnimation(0.0f, 1.0f);
+            Animation anim = new AlphaAnimation(0.2f, 1.0f);
             anim.setDuration(100);
             anim.setStartOffset(20);
             anim.setRepeatMode(Animation.REVERSE);
