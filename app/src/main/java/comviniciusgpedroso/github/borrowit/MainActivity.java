@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //TODO Add notification if is enabled in settings
         if (requestCode == NEW_ITEM_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             // Gets data back from the NewItemActivity Intent
             Long valueAmount = data.getLongExtra(NewItemActivity
