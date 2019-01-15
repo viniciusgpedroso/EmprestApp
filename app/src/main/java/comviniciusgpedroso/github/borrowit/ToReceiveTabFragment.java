@@ -115,7 +115,7 @@ public class ToReceiveTabFragment extends Fragment {
                 // Remove the item from the dataset
                 int position = viewHolder.getAdapterPosition();
                 Item myItem = adapter.getItemAtPosition(position);
-
+                //TODO find way to remove notification when item is removed
                 mItemViewModel.deleteItem(myItem);
                 // Notify the adapter
                 adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
