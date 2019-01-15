@@ -86,6 +86,6 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     private void editThisItem() {
-
+        //TODO find way to change notification for item if date has changed
     }
 }
