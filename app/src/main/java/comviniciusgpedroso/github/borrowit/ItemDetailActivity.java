@@ -17,6 +17,8 @@ public class ItemDetailActivity extends AppCompatActivity {
     private FloatingActionButton fabEdit;
     private FloatingActionButton fabMarkAsDone;
     private boolean fabExpanded = false;
+    //TODO Add aditional fab for archiving item
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
