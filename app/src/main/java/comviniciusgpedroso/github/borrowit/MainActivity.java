@@ -185,13 +185,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_add) {
+        if (id == R.id.nav_add_money) {
             addNewItemActivity(false);
+        } else if (id == R.id.nav_add_object) {
+            addNewItemActivity(true);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.nav_schedule) {
+        } else if (id == R.id.nav_archive) {
             //TODO Change schedule to archive
         }
 
@@ -218,8 +220,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void addNewItemActivity(boolean isObject) {
-        // TODO Add isObject to the intent and deal with the layout for
-        // NewItemActivity
         Intent intent = new Intent(MainActivity.this, NewItemActivity
                 .class);
         intent.putExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, isObject);
