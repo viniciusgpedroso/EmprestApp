@@ -6,9 +6,13 @@
     <group android:checkableBehavior="single">
         <!--TODO Add object-->
         <item
-            android:id="@+id/nav_add"
-            android:icon="@drawable/ic_add_item"
+            android:id="@+id/nav_mone"
+            android:icon="@drawable/ic_add_money_nav"
             android:title="Add money" />
+        <item
+            android:id="@+id/nav_add_object"
+            android:icon="@drawable/ic_add_object_nav"
+            android:title="Add Object" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
