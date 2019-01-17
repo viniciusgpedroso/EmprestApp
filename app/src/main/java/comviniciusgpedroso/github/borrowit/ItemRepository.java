@@ -16,6 +16,7 @@ public class ItemRepository {
     private LiveData<List<Item>> mAllItems;
     private LiveData<List<Item>> mAllPayItems;
     private LiveData<List<Item>> mAllReceiveItems;
+    private LiveData<List<Item>> mAllArchivedItems;
     private LiveData<Long> paySum;
     private LiveData<Long> receiveSum;
     private LiveData<Integer> objectReceiveSum;
@@ -28,6 +29,7 @@ public class ItemRepository {
         mAllItems = mItemDao.getAllItems();
         mAllPayItems = mItemDao.getAllPayItems();
         mAllReceiveItems = mItemDao.getAllReceiveItems();
+        mAllArchivedItems = mItemDao.getAllArchivedItems();
         paySum = mItemDao.getPaySum();
         receiveSum = mItemDao.getReceiveSum();
         objectReceiveSum = mItemDao.getReceiveObjectsSum();
@@ -44,6 +46,10 @@ public class ItemRepository {
 
     LiveData<List<Item>> getAllReceiveItems() {
         return mAllReceiveItems;
+    }
+
+    LiveData<List<Item>> getAllArchivedItems() {
+        return mAllArchivedItems;
     }
 
     LiveData<Long> getPaySum() {
