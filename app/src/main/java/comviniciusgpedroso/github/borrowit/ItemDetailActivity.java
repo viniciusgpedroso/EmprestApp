@@ -18,7 +18,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     private FloatingActionButton fabEdit;
     private FloatingActionButton fabMarkAsDone;
     private FloatingActionButton fabArchive;
-    private boolean fabExpanded = false;
+    private boolean fabExpanded;
     //TODO Add aditional fab for archiving item
 
     @Override
@@ -34,8 +34,6 @@ public class ItemDetailActivity extends AppCompatActivity {
         layoutFabMarkAsDone = findViewById(R.id.layoutFabMarkAsDone);
         layoutFabEdit = findViewById(R.id.layoutFabEdit);
         layoutFabArchive = findViewById(R.id.layoutFabArchive);
-
-        fab.setImageResource(R.drawable.ic_edit_white_24dp);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +60,7 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabArchive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 archiveThisItem();
@@ -82,7 +80,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         layoutFabMarkAsDone.setVisibility(View.INVISIBLE);
         layoutFabEdit.setVisibility(View.INVISIBLE);
         layoutFabArchive.setVisibility(View.INVISIBLE);
-        fab.setImageResource(R.drawable.ic_add_white_24dp);
+        fab.setImageResource(R.drawable.ic_edit_white_24dp);
         fabExpanded = false;
     }
 
