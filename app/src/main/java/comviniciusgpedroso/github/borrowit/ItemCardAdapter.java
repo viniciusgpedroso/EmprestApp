@@ -146,11 +146,15 @@ public class ItemCardAdapter extends
             Intent detailIntent;
             detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
 
+            detailIntent.putExtra("isObject", currentItem.isObject());
             detailIntent.putExtra("amount", currentItem.getAmount());
+            detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
             detailIntent.putExtra("contact", currentItem.getContact());
             detailIntent.putExtra("borrowDate", currentItem.getBorrowDate());
             detailIntent.putExtra("dueDate", currentItem.getDueDate());
+            detailIntent.putExtra("status", currentItem.getStatus());
 
+            //TODO Start Activity for result
             pr.getContext().startActivity(detailIntent);
         }
 

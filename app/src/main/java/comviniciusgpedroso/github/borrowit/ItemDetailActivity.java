@@ -7,8 +7,6 @@ import android.support.v7.widget.AppCompatDrawableManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
-//TODO FIX NAME
-//TODO Add arch progress bar, borrow and due dated in the extremities and amount in the middle
 public class ItemDetailActivity extends AppCompatActivity {
 
     private LinearLayout layoutFabEdit;
@@ -19,7 +17,6 @@ public class ItemDetailActivity extends AppCompatActivity {
     private FloatingActionButton fabMarkAsDone;
     private FloatingActionButton fabArchive;
     private boolean fabExpanded;
-    //TODO Add aditional fab for archiving item
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +66,6 @@ public class ItemDetailActivity extends AppCompatActivity {
 
         closeSubMenusFab();
     }
-
-    // TODO Add multiple action fab with edit, mark as done and delete
-    // TODO arch progress bar with object description limit 20 chars
 
     /**
      * Collapses Object and Money submenus from the addFab
