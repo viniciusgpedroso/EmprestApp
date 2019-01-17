@@ -52,6 +52,10 @@ public class Item {
     @ColumnInfo(name = "objectDescription")
     private String objectDescription;
 
+    @NonNull
+    @ColumnInfo(name = "isArchived")
+    private boolean isArchived;
+
     public Item(@NonNull UUID id, @NonNull Long amount, String contact,
                 @NonNull Date borrowDate, @NonNull Date dueDate,
                 boolean isToReceive, boolean isObject, String
@@ -65,6 +69,7 @@ public class Item {
         this.mIsObject = isObject;
         this.mStatus = status;
         this.objectDescription = objectDescription;
+        this.isArchived = false;
         checkAndSetStatus();
     }
 
@@ -184,6 +189,15 @@ public class Item {
 
     public void setObjectDescription(String objectDescription) {
         this.objectDescription = objectDescription;
+    }
+
+    @NonNull
+    public boolean getIsArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(@NonNull boolean archived) {
+        isArchived = archived;
     }
 
     public int getImageCodeFromStatus() {
