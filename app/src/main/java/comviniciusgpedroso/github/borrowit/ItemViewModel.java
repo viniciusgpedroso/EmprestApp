@@ -15,6 +15,7 @@ public class ItemViewModel extends AndroidViewModel {
     private LiveData<List<Item>> mAllItems;
     private LiveData<List<Item>> mAllPayItems;
     private LiveData<List<Item>> mAllReceiveItems;
+    private LiveData<List<Item>> mAllArchivedItems;
     private LiveData<Long> paySum;
     private LiveData<Long> receiveSum;
     private LiveData<Integer> objectReceiveSum;
@@ -26,6 +27,7 @@ public class ItemViewModel extends AndroidViewModel {
         mAllItems = mRepository.getAllItems();
         mAllPayItems = mRepository.getAllPayItems();
         mAllReceiveItems = mRepository.getAllReceiveItems();
+        mAllArchivedItems = mRepository.getAllArchivedItems();
         paySum = mRepository.getPaySum();
         receiveSum = mRepository.getReceiveSum();
         objectReceiveSum = mRepository.getObjectReceiveSum();
@@ -42,6 +44,10 @@ public class ItemViewModel extends AndroidViewModel {
 
     LiveData<List<Item>> getAllReceiveItems() {
         return mAllReceiveItems;
+    }
+
+    public LiveData<List<Item>> getAllArchivedItems() {
+        return mAllArchivedItems;
     }
 
     public LiveData<Long> getPaySum() {
