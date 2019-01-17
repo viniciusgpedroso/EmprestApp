@@ -13,9 +13,11 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     private LinearLayout layoutFabEdit;
     private LinearLayout layoutFabMarkAsDone;
+    private LinearLayout layoutFabArchive;
     private FloatingActionButton fab;
     private FloatingActionButton fabEdit;
     private FloatingActionButton fabMarkAsDone;
+    private FloatingActionButton fabArchive;
     private boolean fabExpanded = false;
     //TODO Add aditional fab for archiving item
 
@@ -28,8 +30,10 @@ public class ItemDetailActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab_detail);
         fabEdit = findViewById(R.id.fabEdit);
         fabMarkAsDone = findViewById(R.id.fabMarkAsDone);
+        fabArchive = findViewById(R.id.fabArchive);
         layoutFabMarkAsDone = findViewById(R.id.layoutFabMarkAsDone);
         layoutFabEdit = findViewById(R.id.layoutFabEdit);
+        layoutFabArchive = findViewById(R.id.layoutFabArchive);
 
         fab.setImageResource(R.drawable.ic_edit_white_24dp);
 
@@ -58,11 +62,18 @@ public class ItemDetailActivity extends AppCompatActivity {
             }
         });
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                archiveThisItem();
+            }
+        });
+
         closeSubMenusFab();
     }
 
     // TODO Add multiple action fab with edit, mark as done and delete
-    // TODO arch progress bar with object descripto limit 20 chars
+    // TODO arch progress bar with object description limit 20 chars
 
     /**
      * Collapses Object and Money submenus from the addFab
@@ -70,6 +81,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     private void closeSubMenusFab() {
         layoutFabMarkAsDone.setVisibility(View.INVISIBLE);
         layoutFabEdit.setVisibility(View.INVISIBLE);
+        layoutFabArchive.setVisibility(View.INVISIBLE);
         fab.setImageResource(R.drawable.ic_add_white_24dp);
         fabExpanded = false;
     }
@@ -77,6 +89,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     private void openSubMenusFab() {
         layoutFabMarkAsDone.setVisibility(View.VISIBLE);
         layoutFabEdit.setVisibility(View.VISIBLE);
+        layoutFabArchive.setVisibility(View.VISIBLE);
         fab.setImageResource(R.drawable.ic_close_white_24dp);
         fabExpanded = true;
     }
@@ -87,5 +100,9 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     private void editThisItem() {
         //TODO find way to change notification for item if date has changed
+    }
+
+    private void archiveThisItem() {
+
     }
 }
