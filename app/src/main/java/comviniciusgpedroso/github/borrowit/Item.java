@@ -51,7 +51,6 @@ public class Item {
     private boolean mIsObject;
     @ColumnInfo(name = "objectDescription")
     private String objectDescription;
-
     @NonNull
     @ColumnInfo(name = "isArchived")
     private boolean isArchived;
