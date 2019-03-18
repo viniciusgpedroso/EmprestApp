@@ -194,7 +194,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             return true;
         } else if (id == R.id.nav_archive) {
-            //TODO Change schedule to archive
+            Intent intent = new Intent(this, ArchivedItemsActivity.class);
+            startActivity(intent);
+            return true;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

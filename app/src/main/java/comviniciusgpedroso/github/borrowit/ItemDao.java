@@ -48,6 +48,12 @@ public interface ItemDao {
             "AND status != 2 AND isArchived = 0")
     LiveData<Long> getReceiveSum();
 
+    @Query("SELECT SUM(isObject) " +
+            "FROM item_table " +
+            "WHERE isToReceive = 0 AND isObject = 1 " +
+            "AND status !=2 AND isArchived = 0")
+    LiveData<Integer> getReturnObjectsSum();
+
     @Query("SELECT SUM(amount) " +
             "FROM item_table  " +
             "WHERE isToReceive = 0 AND isObject = 0 " +
@@ -59,12 +65,6 @@ public interface ItemDao {
             "WHERE isToReceive = 1 AND isObject = 1 " +
             "AND status !=2 AND isArchived = 0")
     LiveData<Integer> getReceiveObjectsSum();
-
-    @Query("SELECT SUM(isObject) " +
-            "FROM item_table " +
-            "WHERE isToReceive = 0 AND isObject = 1 " +
-            "AND status !=2 AND isArchived = 0")
-    LiveData<Integer> getReturnObjectsSum();
 
     @Query("SELECT * " +
             "FROM item_table " +
