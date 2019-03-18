@@ -1,11 +1,17 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.text.DecimalFormat;
+
+import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTIPLIER;
 
 public class ItemDetailActivity extends AppCompatActivity {
 
@@ -22,6 +28,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        Intent intent = getIntent();
 
         // Menu of action buttons
         fab = findViewById(R.id.fab_detail);
@@ -65,6 +72,26 @@ public class ItemDetailActivity extends AppCompatActivity {
         });
 
         closeSubMenusFab();
+
+        //Fills the details from the current item
+        TextView valueAmount = findViewById(R.id.amount_object_tv);
+
+        if(intent.getBooleanExtra("isObject", false)) {
+            TextView valueDescription = findViewById(R.id.value_object_detail_tv);
+            valueDescription.setText(R.string.object_description);
+            valueAmount.setText(intent.getStringExtra("objectDescription"));
+        } else {
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setMinimumFractionDigits(2);
+            df.setMaximumFractionDigits(2);
+
+            String valueString = "$ " + df.format(intent.getLongExtra("amount", 0) /
+                    CURRENCY_2_DECIMALS_MULTIPLIER);
+            valueAmount.setText(valueString);
+        }
+
+
+
     }
 
     /**
@@ -91,10 +118,10 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     private void editThisItem() {
-        //TODO find way to change notification for item if date has changed
+        //TODO find way to change notification for edited item if date has changed
     }
 
     private void archiveThisItem() {
-
+        //TODO find way to disable notification for archived item
     }
 }

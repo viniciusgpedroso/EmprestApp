@@ -33,4 +33,5 @@
     <string name="mark_as_done">Mark as Done</string>
     <string name="fab_edit">Edit Details</string>
     <string name="archive_item">Archive item</string>
+    <string name="object_description">Object Description</string>
 </resources>

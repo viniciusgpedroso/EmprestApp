@@ -23,6 +23,8 @@ import android.widget.Toast;
 import java.util.Date;
 import java.util.UUID;
 
+import static comviniciusgpedroso.github.borrowit.ItemCardAdapter.ITEM_CARD_DETAIL_REQUEST_CODE;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
@@ -225,6 +227,10 @@ public class MainActivity extends AppCompatActivity
                 .class);
         intent.putExtra(NEW_ITEM_ACTIVITY_IS_OBJECT, isObject);
         startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
+    }
+
+    public void detailItemActivity(Intent detailIntent) {
+        startActivityForResult(detailIntent, ITEM_CARD_DETAIL_REQUEST_CODE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

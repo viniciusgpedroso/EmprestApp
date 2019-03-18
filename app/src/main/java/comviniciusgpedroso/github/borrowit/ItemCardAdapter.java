@@ -1,5 +1,6 @@
 package comviniciusgpedroso.github.borrowit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -26,6 +27,9 @@ import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTI
 //https://codelabs.developers.google.com/codelabs/android-training-create-recycler-view/index.html?index=..%2F..%2Fandroid-training#3
 public class ItemCardAdapter extends
         RecyclerView.Adapter<ItemCardAdapter.ItemCardHolder> {
+
+    public static final int ITEM_CARD_DETAIL_REQUEST_CODE = 0;
+
 
     private final LayoutInflater mInflater;
     private ArrayList<Item> mItemArrayList;
@@ -146,7 +150,9 @@ public class ItemCardAdapter extends
             Intent detailIntent;
             detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
 
+            detailIntent.putExtra("mId", currentItem.getId());
             detailIntent.putExtra("isObject", currentItem.isObject());
+            detailIntent.putExtra("isToReceive", currentItem.isToReceive());
             detailIntent.putExtra("amount", currentItem.getAmount());
             detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
             detailIntent.putExtra("contact", currentItem.getContact());

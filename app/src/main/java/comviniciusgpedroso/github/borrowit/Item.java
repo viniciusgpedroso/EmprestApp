@@ -33,7 +33,7 @@ public class Item {
     private UUID mId;
     @NonNull
     @ColumnInfo(name = "amount")
-    private Long mAmount; // TODO Convert this float to Currency using system location
+    private Long mAmount; // TODO Convert this long to Currency using system location
     @ColumnInfo(name = "contact")
     private String mContact;
     @NonNull
