@@ -3,6 +3,8 @@ package comviniciusgpedroso.github.borrowit;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import java.text.DecimalFormat;
@@ -16,7 +18,7 @@ import java.util.UUID;
  * Deals with the data model for the borrow items.
  */
 @Entity(tableName = "item_table")
-public class Item {
+public class Item implements Parcelable {
     // Status constants
     public static final int OVERDUE = 0;
     public static final int DUE = 1;
@@ -219,4 +221,15 @@ public class Item {
         }
     }
 
+    //Methods required by the Parcelable Interface
+    //TODO implement methods for parcelable
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }

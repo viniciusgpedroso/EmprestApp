@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,6 @@ public class ItemCardAdapter extends
         RecyclerView.Adapter<ItemCardAdapter.ItemCardHolder> {
 
     public static final int ITEM_CARD_DETAIL_REQUEST_CODE = 0;
-
 
     private final LayoutInflater mInflater;
     private ArrayList<Item> mItemArrayList;
