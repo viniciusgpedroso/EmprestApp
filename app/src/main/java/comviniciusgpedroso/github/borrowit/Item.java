@@ -135,16 +135,21 @@ public class Item {
         return mDueDate;
     }
 
-    public String getSimpleDueDate() {
+    public static String getSimpleDate(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(mDueDate);
+        cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
         String month = cal.getDisplayName(Calendar.MONTH, Calendar.SHORT,
                 Locale.getDefault());
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
         return day + " " + month + " " + year;
-    };
+    }
+
+    public static String getSimpleDate(String dateString) {
+        Date date = new Date(dateString);
+        return getSimpleDate(date);
+    }
 
     public void setDueDate(Date dueDate) {
         mDueDate = dueDate;
@@ -213,4 +218,5 @@ public class Item {
                         R.drawable.ic_pay_after_due_date;
         }
     }
+
 }

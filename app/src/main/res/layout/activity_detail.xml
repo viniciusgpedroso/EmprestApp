@@ -150,7 +150,7 @@
             android:paddingBottom="16dp"
             android:paddingTop="8dp"
             android:textSize="24sp"
-            android:text="Due to 01 Jan 2001"
+            android:text="Due by 01 Jan 2001"
             app:layout_constraintTop_toBottomOf="@+id/status_line"
             app:layout_constraintStart_toEndOf="@id/status_img_detail"/>
 

@@ -34,4 +34,6 @@
     <string name="fab_edit">Edit Details</string>
     <string name="archive_item">Archive item</string>
     <string name="object_description">Object Description</string>
+    <string name="receive_from">Receive From</string>
+    <string name="return_to">Return To</string>
 </resources>

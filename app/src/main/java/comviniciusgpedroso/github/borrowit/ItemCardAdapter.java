@@ -97,7 +97,7 @@ public class ItemCardAdapter extends
             holder.mOverdueText.startAnimation(anim);
         }
 
-        holder.mDueDate.setText(currentItem.getSimpleDueDate());
+        holder.mDueDate.setText(currentItem.getSimpleDate(currentItem.getDueDate()));
         holder.mContact.setText(currentItem.getContact());
         holder.mImageStatus.setImageResource(currentItem.getImageCodeFromStatus());
     }
@@ -156,9 +156,10 @@ public class ItemCardAdapter extends
             detailIntent.putExtra("amount", currentItem.getAmount());
             detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
             detailIntent.putExtra("contact", currentItem.getContact());
-            detailIntent.putExtra("borrowDate", currentItem.getBorrowDate());
-            detailIntent.putExtra("dueDate", currentItem.getDueDate());
+            detailIntent.putExtra("borrowDate", currentItem.getSimpleDate(currentItem.getBorrowDate()));
+            detailIntent.putExtra("dueDate", currentItem.getSimpleDate(currentItem.getDueDate()));
             detailIntent.putExtra("status", currentItem.getStatus());
+            detailIntent.putExtra("statusImgCode", currentItem.getImageCodeFromStatus());
 
             //TODO Start Activity for result
             pr.getContext().startActivity(detailIntent);

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -90,6 +91,24 @@ public class ItemDetailActivity extends AppCompatActivity {
             valueAmount.setText(valueString);
         }
 
+        TextView contactTextView = findViewById(R.id.contact_tv);
+        if(intent.getBooleanExtra("isToReceive", false)) {
+            contactTextView.setText(R.string.receive_from);
+        } else {
+            contactTextView.setText(R.string.return_to);
+        }
+
+        TextView contactDescription = findViewById(R.id.contact_description_tv);
+        contactDescription.setText(intent.getStringExtra("contact"));
+
+        TextView borrowDateTextView = findViewById(R.id.borrow_date_tv_detail);
+        borrowDateTextView.setText(intent.getStringExtra("borrowDate"));
+
+        ImageView imageStatusView = findViewById(R.id.status_img_detail);
+        imageStatusView.setImageResource(intent.getIntExtra("statusImgCode", R.drawable
+                .ic_before_due_date));
+        TextView statusDescriptionTextView = findViewById(R.id.status_description);
+        statusDescriptionTextView.setText(intent.getStringExtra("dueDate"));
 
 
     }
