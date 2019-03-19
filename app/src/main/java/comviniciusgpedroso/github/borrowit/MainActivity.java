@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity
             Item item = new Item(UUID.randomUUID(), valueAmount, contact,
                     Converters.fromTimeStamp(borrowDateTime), Converters
                     .fromTimeStamp(dueDateTime), toReceive, isObject,
-                    objectDescr, alreadyPaidStatus);
+                    objectDescr, alreadyPaidStatus, false);
             mItemViewModel.insert(item);
 
         }

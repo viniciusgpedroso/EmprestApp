@@ -60,7 +60,7 @@ public class Item implements Parcelable {
     public Item(@NonNull UUID id, @NonNull Long amount, String contact,
                 @NonNull Date borrowDate, @NonNull Date dueDate,
                 boolean isToReceive, boolean isObject, String
-                        objectDescription, int status) {
+                        objectDescription, int status, boolean isArchived) {
         this.mId = id;
         this.mAmount = amount;
         this.mContact = contact;
@@ -70,9 +70,39 @@ public class Item implements Parcelable {
         this.mIsObject = isObject;
         this.mStatus = status;
         this.objectDescription = objectDescription;
-        this.isArchived = false;
+        this.isArchived = isArchived;
         checkAndSetStatus();
     }
+
+    protected Item(Parcel in) {
+        if (in.readByte() == 0) {
+            mAmount = null;
+        } else {
+            mAmount = in.readLong();
+        }
+        mContact = in.readString();
+        if (in.readByte() == 0) {
+            mStatus = null;
+        } else {
+            mStatus = in.readInt();
+        }
+        mIsToReceive = in.readByte() != 0;
+        mIsObject = in.readByte() != 0;
+        objectDescription = in.readString();
+        isArchived = in.readByte() != 0;
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     /**
      * Checks and sets the status considering the current date, due date and
@@ -222,7 +252,7 @@ public class Item implements Parcelable {
     }
 
     //Methods required by the Parcelable Interface
-    //TODO implement methods for parcelable
+    //TODO implement methods for parcelable (NEEDS CREATOR)
     @Override
     public int describeContents() {
         return 0;
@@ -230,6 +260,22 @@ public class Item implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        if (mAmount == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(mAmount);
+        }
+        parcel.writeString(mContact);
+        if (mStatus == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(mStatus);
+        }
+        parcel.writeByte((byte) (mIsToReceive ? 1 : 0));
+        parcel.writeByte((byte) (mIsObject ? 1 : 0));
+        parcel.writeString(objectDescription);
+        parcel.writeByte((byte) (isArchived ? 1 : 0));
     }
 }

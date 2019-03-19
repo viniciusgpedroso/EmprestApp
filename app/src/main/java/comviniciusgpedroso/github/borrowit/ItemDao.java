@@ -33,13 +33,13 @@ public interface ItemDao {
     @Query("SELECT * " +
             "FROM item_table " +
             "WHERE isToReceive = 1 AND isArchived = 0 " +
-            "ORDER BY status, borrowDate DESC")
+            "ORDER BY status, dueDate DESC")
     LiveData<List<Item>> getAllReceiveItems();
 
     @Query("SELECT * " +
             "FROM item_table " +
             "WHERE isToReceive = 0 AND isArchived = 0 " +
-            "ORDER BY status, borrowDate DESC")
+            "ORDER BY status, dueDate DESC")
     LiveData<List<Item>> getAllPayItems();
 
     @Query("SELECT SUM(amount) " +
@@ -69,6 +69,6 @@ public interface ItemDao {
     @Query("SELECT * " +
             "FROM item_table " +
             "WHERE isArchived = 1 " +
-            "ORDER BY status, borrowDate DESC")
+            "ORDER BY status, dueDate DESC")
     LiveData<List<Item>> getAllArchivedItems();
 }
