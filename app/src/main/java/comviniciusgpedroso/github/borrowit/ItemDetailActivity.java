@@ -30,6 +30,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
+        Item parcelItem = intent.getParcelableExtra("parcelItem");
 
         // Menu of action buttons
         fab = findViewById(R.id.fab_detail);
@@ -77,38 +78,40 @@ public class ItemDetailActivity extends AppCompatActivity {
         //Fills the details from the current item
         TextView valueAmount = findViewById(R.id.amount_object_tv);
 
-        if(intent.getBooleanExtra("isObject", false)) {
+        if(parcelItem.isObject()) {
             TextView valueDescription = findViewById(R.id.value_object_detail_tv);
             valueDescription.setText(R.string.object_description);
-            valueAmount.setText(intent.getStringExtra("objectDescription"));
+            valueAmount.setText(parcelItem.getObjectDescription());
         } else {
             DecimalFormat df = new DecimalFormat("#.##");
             df.setMinimumFractionDigits(2);
             df.setMaximumFractionDigits(2);
 
-            String valueString = "$ " + df.format(intent.getLongExtra("amount", 0) /
+            String valueString = "$ " + df.format(parcelItem.getAmount() /
                     CURRENCY_2_DECIMALS_MULTIPLIER);
             valueAmount.setText(valueString);
         }
 
         TextView contactTextView = findViewById(R.id.contact_tv);
-        if(intent.getBooleanExtra("isToReceive", false)) {
+        if(parcelItem.isToReceive()) {
             contactTextView.setText(R.string.receive_from);
         } else {
             contactTextView.setText(R.string.return_to);
         }
 
         TextView contactDescription = findViewById(R.id.contact_description_tv);
-        contactDescription.setText(intent.getStringExtra("contact"));
+        contactDescription.setText(parcelItem.getContact());
 
         TextView borrowDateTextView = findViewById(R.id.borrow_date_tv_detail);
-        borrowDateTextView.setText(intent.getStringExtra("borrowDate"));
+        borrowDateTextView.setText(Item.getSimpleDate(parcelItem.getBorrowDate()));
 
         ImageView imageStatusView = findViewById(R.id.status_img_detail);
-        imageStatusView.setImageResource(intent.getIntExtra("statusImgCode", R.drawable
-                .ic_before_due_date));
+        imageStatusView.setImageResource(parcelItem.getImageCodeFromStatus());
+
         TextView statusDescriptionTextView = findViewById(R.id.status_description);
-        statusDescriptionTextView.setText(intent.getStringExtra("dueDate"));
+        String dueDateDescription = getString(R.string.due_by) + " " + Item.getSimpleDate(parcelItem
+                        .getDueDate());
+        statusDescriptionTextView.setText(dueDateDescription);
 
 
     }

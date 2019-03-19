@@ -74,24 +74,6 @@ public class Item implements Parcelable {
         checkAndSetStatus();
     }
 
-    protected Item(Parcel in) {
-        if (in.readByte() == 0) {
-            mAmount = null;
-        } else {
-            mAmount = in.readLong();
-        }
-        mContact = in.readString();
-        if (in.readByte() == 0) {
-            mStatus = null;
-        } else {
-            mStatus = in.readInt();
-        }
-        mIsToReceive = in.readByte() != 0;
-        mIsObject = in.readByte() != 0;
-        objectDescription = in.readString();
-        isArchived = in.readByte() != 0;
-    }
-
     public static final Creator<Item> CREATOR = new Creator<Item>() {
         @Override
         public Item createFromParcel(Parcel in) {
@@ -238,7 +220,7 @@ public class Item implements Parcelable {
 
     public int getImageCodeFromStatus() {
         checkAndSetStatus();
-        switch (mStatus){
+        switch (mStatus) {
             case DONE:
                 return mIsToReceive ? R.drawable.ic_checked :
                         R.drawable.ic_pay_checked;
@@ -252,7 +234,27 @@ public class Item implements Parcelable {
     }
 
     //Methods required by the Parcelable Interface
-    //TODO implement methods for parcelable (NEEDS CREATOR)
+    //Parcel implementation to change details and archiving in the ItemDetailActivity
+    protected Item(Parcel in) {
+        if (in.readByte() == 0) {
+            mAmount = null;
+        } else {
+            mAmount = in.readLong();
+        }
+        mContact = in.readString();
+        if (in.readByte() == 0) {
+            mStatus = null;
+        } else {
+            mStatus = in.readInt();
+        }
+        mIsToReceive = in.readByte() != 0;
+        mIsObject = in.readByte() != 0;
+        objectDescription = in.readString();
+        isArchived = in.readByte() != 0;
+        mBorrowDate = new Date(in.readLong());
+        mDueDate = new Date(in.readLong());
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -277,5 +279,8 @@ public class Item implements Parcelable {
         parcel.writeByte((byte) (mIsObject ? 1 : 0));
         parcel.writeString(objectDescription);
         parcel.writeByte((byte) (isArchived ? 1 : 0));
+        parcel.writeLong(mBorrowDate != null ? mBorrowDate.getTime() : Long.MIN_VALUE);
+        parcel.writeLong(mDueDate != null ? mDueDate.getTime() : Long.MIN_VALUE);
     }
 }
+

@@ -36,4 +36,5 @@
     <string name="object_description">Object Description</string>
     <string name="receive_from">Receive From</string>
     <string name="return_to">Return To</string>
+    <string name="due_by">Due by</string>
 </resources>

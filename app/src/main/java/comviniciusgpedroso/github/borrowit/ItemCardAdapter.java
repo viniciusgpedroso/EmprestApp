@@ -150,18 +150,19 @@ public class ItemCardAdapter extends
             Intent detailIntent;
             detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
 
-            detailIntent.putExtra("mId", currentItem.getId());
-            detailIntent.putExtra("isObject", currentItem.isObject());
-            detailIntent.putExtra("isToReceive", currentItem.isToReceive());
-            detailIntent.putExtra("amount", currentItem.getAmount());
-            detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
-            detailIntent.putExtra("contact", currentItem.getContact());
-            detailIntent.putExtra("borrowDate", currentItem.getSimpleDate(currentItem.getBorrowDate()));
-            detailIntent.putExtra("dueDate", currentItem.getSimpleDate(currentItem.getDueDate()));
-            detailIntent.putExtra("status", currentItem.getStatus());
-            detailIntent.putExtra("statusImgCode", currentItem.getImageCodeFromStatus());
+            detailIntent.putExtra("parcelItem", currentItem);
 
-            //TODO Start Activity for result
+//            detailIntent.putExtra("mId", currentItem.getId());
+//            detailIntent.putExtra("isObject", currentItem.isObject());
+//            detailIntent.putExtra("isToReceive", currentItem.isToReceive());
+//            detailIntent.putExtra("amount", currentItem.getAmount());
+//            detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
+//            detailIntent.putExtra("contact", currentItem.getContact());
+//            detailIntent.putExtra("borrowDate", currentItem.getSimpleDate(currentItem.getBorrowDate()));
+//            detailIntent.putExtra("dueDate", currentItem.getSimpleDate(currentItem.getDueDate()));
+//            detailIntent.putExtra("status", currentItem.getStatus());
+//            detailIntent.putExtra("statusImgCode", currentItem.getImageCodeFromStatus());
+//
             pr.getContext().startActivity(detailIntent);
         }
 
