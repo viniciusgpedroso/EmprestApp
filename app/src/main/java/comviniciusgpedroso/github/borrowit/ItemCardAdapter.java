@@ -120,6 +120,18 @@ public class ItemCardAdapter extends
         notifyDataSetChanged();
     }
 
+    public void viewDetailActivity(Item currentItem) {
+        Intent detailIntent;
+        detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
+
+        detailIntent.putExtra("parcelItem", currentItem);
+
+        ((Activity) mContext).startActivityForResult(detailIntent,
+                ITEM_CARD_DETAIL_REQUEST_CODE);
+
+        // MAIN ACTIVITY IS RECEIVEING DATA - CORRECT CODE at ItemDetailActivity
+    }
+
     class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageStatus;
         public TextView mValue;
@@ -147,24 +159,11 @@ public class ItemCardAdapter extends
         @Override
         public void onClick(View view) {
             Item currentItem = mItemArrayList.get(getAdapterPosition());
-            Intent detailIntent;
-            detailIntent = new Intent(pr.getContext(), ItemDetailActivity.class);
 
-            detailIntent.putExtra("parcelItem", currentItem);
-
-//            detailIntent.putExtra("mId", currentItem.getId());
-//            detailIntent.putExtra("isObject", currentItem.isObject());
-//            detailIntent.putExtra("isToReceive", currentItem.isToReceive());
-//            detailIntent.putExtra("amount", currentItem.getAmount());
-//            detailIntent.putExtra("objectDescription", currentItem.getObjectDescription());
-//            detailIntent.putExtra("contact", currentItem.getContact());
-//            detailIntent.putExtra("borrowDate", currentItem.getSimpleDate(currentItem.getBorrowDate()));
-//            detailIntent.putExtra("dueDate", currentItem.getSimpleDate(currentItem.getDueDate()));
-//            detailIntent.putExtra("status", currentItem.getStatus());
-//            detailIntent.putExtra("statusImgCode", currentItem.getImageCodeFromStatus());
-//
-            pr.getContext().startActivity(detailIntent);
+            viewDetailActivity(currentItem);
         }
 
     }
+
+
 }

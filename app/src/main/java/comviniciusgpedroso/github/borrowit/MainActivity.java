@@ -229,10 +229,6 @@ public class MainActivity extends AppCompatActivity
         startActivityForResult(intent, NEW_ITEM_ACTIVITY_REQUEST_CODE);
     }
 
-    public void detailItemActivity(Intent detailIntent) {
-        startActivityForResult(detailIntent, ITEM_CARD_DETAIL_REQUEST_CODE);
-    }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //TODO Add notification if is enabled in settings

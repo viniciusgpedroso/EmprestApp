@@ -24,13 +24,15 @@ public class ItemDetailActivity extends AppCompatActivity {
     private FloatingActionButton fabMarkAsDone;
     private FloatingActionButton fabArchive;
     private boolean fabExpanded;
+    private Item parcelItem;
+    private ImageView imageStatusView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
-        Item parcelItem = intent.getParcelableExtra("parcelItem");
+        parcelItem = intent.getParcelableExtra("parcelItem");
 
         // Menu of action buttons
         fab = findViewById(R.id.fab_detail);
@@ -105,7 +107,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         TextView borrowDateTextView = findViewById(R.id.borrow_date_tv_detail);
         borrowDateTextView.setText(Item.getSimpleDate(parcelItem.getBorrowDate()));
 
-        ImageView imageStatusView = findViewById(R.id.status_img_detail);
+        imageStatusView = findViewById(R.id.status_img_detail);
         imageStatusView.setImageResource(parcelItem.getImageCodeFromStatus());
 
         TextView statusDescriptionTextView = findViewById(R.id.status_description);
@@ -136,7 +138,10 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     private void markThisItemAsDone() {
-
+        //TODO find way to change notification for done item if date has changed
+        parcelItem.setDone();
+        imageStatusView.setImageResource(parcelItem.getImageCodeFromStatus());
+        closeSubMenusFab();
     }
 
     private void editThisItem() {
@@ -145,5 +150,6 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     private void archiveThisItem() {
         //TODO find way to disable notification for archived item
+
     }
 }
