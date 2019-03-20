@@ -29,7 +29,7 @@ import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTI
 public class ItemCardAdapter extends
         RecyclerView.Adapter<ItemCardAdapter.ItemCardHolder> {
 
-    public static final int ITEM_CARD_DETAIL_REQUEST_CODE = 0;
+
 
     private final LayoutInflater mInflater;
     private ArrayList<Item> mItemArrayList;
@@ -127,9 +127,9 @@ public class ItemCardAdapter extends
         detailIntent.putExtra("parcelItem", currentItem);
 
         ((Activity) mContext).startActivityForResult(detailIntent,
-                ITEM_CARD_DETAIL_REQUEST_CODE);
+                MainActivity.ITEM_CARD_DETAIL_REQUEST_CODE);
 
-        // MAIN ACTIVITY IS RECEIVEING DATA - CORRECT CODE at ItemDetailActivity
+        // MAIN ACTIVITY IS RECEIVING DATA - CORRECT CODE at ItemDetailActivity
     }
 
     class ItemCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

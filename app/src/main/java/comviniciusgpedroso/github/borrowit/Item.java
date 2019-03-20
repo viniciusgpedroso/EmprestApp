@@ -236,6 +236,7 @@ public class Item implements Parcelable {
     //Methods required by the Parcelable Interface
     //Parcel implementation to change details and archiving in the ItemDetailActivity
     protected Item(Parcel in) {
+        mId = UUID.fromString(in.readString());
         if (in.readByte() == 0) {
             mAmount = null;
         } else {
@@ -262,6 +263,7 @@ public class Item implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(mId.toString());
         if (mAmount == null) {
             parcel.writeByte((byte) 0);
         } else {

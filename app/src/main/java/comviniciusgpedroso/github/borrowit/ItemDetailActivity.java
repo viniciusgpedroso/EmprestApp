@@ -16,6 +16,15 @@ import static comviniciusgpedroso.github.borrowit.Item.CURRENCY_2_DECIMALS_MULTI
 
 public class ItemDetailActivity extends AppCompatActivity {
 
+    public static final String MODIFIED_ITEM =
+            "comviniciusgpedroso.github.borrowit.MODIFIEDITEM";
+    public static final String MARKED_DONE_EDIT =
+            "comviniciusgpedroso.github.borrowit.MARKEDDONEEDIT";
+    public static final String MARKED_ARCHIVE_EDIT =
+            "comviniciusgpedroso.github.borrowit.MARKEDARCHIVEDEDIT";
+    public static final String DETAILS_EDIT =
+            "comviniciusgpedroso.github.borrowit.DETAILSEDIT";
+
     private LinearLayout layoutFabEdit;
     private LinearLayout layoutFabMarkAsDone;
     private LinearLayout layoutFabArchive;
@@ -26,6 +35,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     private boolean fabExpanded;
     private Item parcelItem;
     private ImageView imageStatusView;
+    private Intent replyIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +125,10 @@ public class ItemDetailActivity extends AppCompatActivity {
                         .getDueDate());
         statusDescriptionTextView.setText(dueDateDescription);
 
-
+        //Creates a reply intent
+        replyIntent = new Intent();
+        replyIntent.putExtra("parcelItem", parcelItem);
+        setResult(RESULT_OK, replyIntent);
     }
 
     /**
@@ -130,6 +143,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     private void openSubMenusFab() {
+        //Check if item is already archived and change icon for un-archive
         layoutFabMarkAsDone.setVisibility(View.VISIBLE);
         layoutFabEdit.setVisibility(View.VISIBLE);
         layoutFabArchive.setVisibility(View.VISIBLE);
@@ -141,15 +155,21 @@ public class ItemDetailActivity extends AppCompatActivity {
         //TODO find way to change notification for done item if date has changed
         parcelItem.setDone();
         imageStatusView.setImageResource(parcelItem.getImageCodeFromStatus());
+        replyIntent.putExtra(MODIFIED_ITEM, true);
+        replyIntent.putExtra(MARKED_DONE_EDIT, true);
         closeSubMenusFab();
     }
 
     private void editThisItem() {
         //TODO find way to change notification for edited item if date has changed
+        replyIntent.putExtra(MODIFIED_ITEM, true);
+        replyIntent.putExtra(DETAILS_EDIT, true);
     }
 
     private void archiveThisItem() {
         //TODO find way to disable notification for archived item
-
+        replyIntent.putExtra(MODIFIED_ITEM, true);
+        replyIntent.putExtra(MARKED_ARCHIVE_EDIT, true);
+        closeSubMenusFab();
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @Dao
 public interface ItemDao {
     //TODO Add isArchived boolean and change queries to not include archived
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Item item);
 
     @Query("DELETE FROM item_table")

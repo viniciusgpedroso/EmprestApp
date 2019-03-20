@@ -23,11 +23,11 @@ import android.widget.Toast;
 import java.util.Date;
 import java.util.UUID;
 
-import static comviniciusgpedroso.github.borrowit.ItemCardAdapter.ITEM_CARD_DETAIL_REQUEST_CODE;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NEW_ITEM_ACTIVITY_REQUEST_CODE = 1;
+    public static final int ITEM_CARD_DETAIL_REQUEST_CODE = 2;
     public static final String NEW_ITEM_ACTIVITY_IS_OBJECT = "comviniciusgpedroso.github.borrowit" +
             ".ISOBJECT";
 
@@ -257,13 +257,30 @@ public class MainActivity extends AppCompatActivity
                     objectDescr, alreadyPaidStatus, false);
             mItemViewModel.insert(item);
 
+        } else if(requestCode == ITEM_CARD_DETAIL_REQUEST_CODE && resultCode == RESULT_OK &&
+                data.getBooleanExtra(ItemDetailActivity.MODIFIED_ITEM, false)) {
+            //Updates only the status column
+            if(data.getBooleanExtra(ItemDetailActivity.MARKED_DONE_EDIT, false)) {
+                //TODO Update done status
+            }
+            //Updates only the archived column
+            if(data.getBooleanExtra(ItemDetailActivity.MARKED_ARCHIVE_EDIT, false)) {
+                //TODO Update archived status
+            }
+            //Updates all the fields from the item
+            if(data.getBooleanExtra(ItemDetailActivity.DETAILS_EDIT, false)) {
+                //TODO Update all the fields from the item
+            }
+        } else {
+            if (requestCode != ITEM_CARD_DETAIL_REQUEST_CODE){
+                Toast.makeText(
+                        this,
+                        R.string.not_saved_toast,
+                        Toast.LENGTH_LONG).show();
+            }
         }
-        else {
-            Toast.makeText(
-                    this,
-                    R.string.not_saved_toast,
-                    Toast.LENGTH_LONG).show();
-        }
+
+
 
         if(fabExpanded) {
             closeSubMenusFab();
